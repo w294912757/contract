@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>合同管理系统</title>
+<script type="text/javascript">
+	function reLogin() {
+		var r = confirm("确认注销登录？")
+		if (r == true) {
+			window.location.href = "../HTML/login.html"
+		} else {
+
+		}
+	}
+
+	function Draft() {
+		window.location.href = "../HTML/draft.html"
+	}
+
+	function Countersign() {
+		window.location.href = "../HTML/contersign.html"
+	}
+
+	function Confirm() {
+		window.location.href = "../HTML/confirm.html"
+	}
+
+	function Approve() {
+		window.location.href = "../HTML/approve.html"
+	}
+
+	function Sign() {
+		window.location.href = "../HTML/sign.html"
+	}
+</script>
+</head>
+<body>
+	<button onclick="reLogin()">注销登录</button>
+	<button onclick="Draft()">起草合同</button>
+	<button onclick="Countersign()">会签合同</button>
+	<button onclick="Confirm()">定稿合同</button>
+	<button onclick="Approve()">审批合同</button>
+	<button onclick="Sign()">签订合同</button>
+</body>
+</html>
