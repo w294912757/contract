@@ -45,6 +45,33 @@
 
 	</div>
 
-	<div class="mainview"></div>
+	<div class="mainview">
+		<div>
+			<form name="draftform" id="draftform" method="get"
+				onsubmit="return Check()">
+				<h3>起草合同</h3>
+				合同名称:<input type="text" id="contractname" name="contractname"
+					style="margin-left: 26px; width: 150px;"> <font
+					style="color: red;"> *</font> <br>客户:<input type="text"
+					id="client" name="client" style="margin-left: 46px; width: 150px;"><br>开始时间:<input
+					type="text" id="begintime" name="begintime"
+					style="margin-left: 10px; width: 150px;"><font
+					style="color: red;"> *正确的格式：yyyy-mm-dd</font> <br>结束时间:<input
+					type="text" id="endtime" name="endtime"
+					style="margin-left: 10px; width: 150px;"> <font
+					style="color: red;"> *正确的格式：yyyy-mm-dd</font> <br> 合同内容: <font
+					style="color: red;">* </font><br>
+				<textarea
+					style="overflow: scroll; overflow-x: hidden; height: 200px; width: 80%;"
+					form="draftform" name="contractcontent" id="contractcontent"></textarea>
+
+				<br> <input type="submit" value="提交" style="margin-left: 40px">
+				<input type="button" value="重置" style="margin-left: 10px"
+					onclick="window.location.href='../HTML/draft.html'">
+			</form>
+		</div>
+
+
+	</div>
 </body>
 </html>

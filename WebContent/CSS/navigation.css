@@ -3,13 +3,14 @@
 .navigation {
 	float: left;
 	background-color: red;
-	width: 100px;
+	width: 10%;
 	height: 400px;
+	text-align:center;
 }
 
 .mainview {
-	float: left;
+	float: right;
 	background-color: green;
-	width: 1400px;
-	height: 400px;
+	width: 85%;
+	height: 500px;
 }
