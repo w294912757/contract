@@ -12,34 +12,42 @@
 
 		}
 	}
-
-	function Draft() {
-		window.location.href = "../HTML/draft.html"
-	}
-
-	function Countersign() {
-		window.location.href = "../HTML/contersign.html"
-	}
-
-	function Confirm() {
-		window.location.href = "../HTML/confirm.html"
-	}
-
-	function Approve() {
-		window.location.href = "../HTML/approve.html"
-	}
-
-	function Sign() {
-		window.location.href = "../HTML/sign.html"
-	}
 </script>
+<link rel="stylesheet" type="text/css" href="../CSS/navigation.css">
 </head>
 <body>
-	<button onclick="reLogin()">注销登录</button>
-	<button onclick="Draft()">起草合同</button>
-	<button onclick="Countersign()">会签合同</button>
-	<button onclick="Confirm()">定稿合同</button>
-	<button onclick="Approve()">审批合同</button>
-	<button onclick="Sign()">签订合同</button>
+
+		<button onclick="reLogin()" style="float: right;">注销登录</button>
+		<div style="width: 1500px;height: 100px;background-color: black;"></div>
+		<div class="navigation">
+
+			<br> <a>合同起草</a>
+			<div style="margin-left: 10px">
+				<a href="../HTML/draft.html">起草合同</a> <br> <a
+					href="../HTML/toconfirm.html">待定稿合同</a> <br> <a
+					href="../HTML/confirmed.html">已定稿合同</a> <br> <a
+					href="../HTML/query.html">流程查询</a>
+			</div>
+			<br> <a>合同会签</a>
+			<div style="margin-left: 10px">
+				<a href="../HTML/tocontersign.html">待会签合同</a> <br> <a
+					href="../HTML/contersigned.html">已会签合同</a>
+			</div>
+			<br> <a>合同审批</a>
+			<div style="margin-left: 10px">
+				<a href="../HTML/toapprove.html">待审批合同</a> <br> <a
+					href="../HTML/approved.html">已审批合同</a>
+			</div>
+			<br> <a>合同签订</a>
+			<div style="margin-left: 10px">
+				<a href="../HTML/tosign.html">待签订合同</a> <br> <a
+					href="../HTML/signed.html">已签订合同</a>
+			</div>
+
+		</div>
+
+		<div class="mainview"></div>
+
+
 </body>
 </html>

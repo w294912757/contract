@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.navigation {
+	float: left;
+	background-color: red;
+	width: 100px;
+	height: 400px;
+}
+
+.mainview {
+	float: left;
+	background-color: green;
+	width: 1400px;
+	height: 400px;
+}
