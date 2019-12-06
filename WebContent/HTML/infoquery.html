@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>待定稿合同</title>
+<title>合同信息查询</title>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -12,12 +12,7 @@
 
 		}
 	}
-	
-	function Search() {
-		alert("搜索")
-	}
 </script>
-
 <link rel="stylesheet" type="text/css" href="../CSS/background.css">
 </head>
 <body>
@@ -42,26 +37,24 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="toconfirmform" id="toconfirmform" method="get"
-				action="confirm.html">
-				<h3>待定稿合同</h3>
-				查找待定稿合同:<input type="text" id="contractname" name="contractname"
+			<form name="infoqueryform" id="infoqueryform" method="get"
+				action="">
+				<h3>合同信息查询</h3>
+				查找合同:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
 				<button style="height: 20px; width: 55px; text-align: center;"
-					id="searchbutton" onclick="Search()" type="button">search</button>
+					id="searchbutton">search</button>
 				<br>
 
 				<table border="1" style="width: 100%">
 					<tr>
 						<th style="width: 60%;">合同名称</th>
 						<th>起草时间</th>
-						<th>操作</th>
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
-						<td style="text-align: center;"><input type="submit"
-							value="定稿"></td>
+
 					</tr>
 				</table>
 			</form>
