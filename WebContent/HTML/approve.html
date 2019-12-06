@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>已审批合同</title>
+<title>审批合同</title>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -13,6 +13,7 @@
 		}
 	}
 </script>
+
 <link rel="stylesheet" type="text/css" href="../CSS/background.css">
 </head>
 <body>
@@ -37,26 +38,28 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="approvedform" id="approvedform" method="get">
-				<h3>已审批合同</h3>
-				查找已审批合同:<input type="text" id="contractname" name="contractname"
-					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
-				<button style="height: 20px; width: 55px; text-align: center;"
-					id="searchbutton">search</button>
-				<br>
+			<form name="approveform" id="approveform" method="get"
+				action="tosign.html">
+				<h3>审批合同</h3>
+				合同名称:<font> XXX</font> <br>
+				<div style="width: 100%">
+					<div style="width: 20%; float: left; text-align: center;">
+						<input type="radio" id="yes" name="choise"> 通过 <br> <input
+							type="radio" id="no" name="choise"> 拒绝
+					</div>
+					<div style="width: 80%; float: right;">
+						<textarea
+							style="overflow: scroll; overflow-x: hidden; height: 100px; width: 100%;"
+							form="approveform" name="approvecontent" id="approvecontent"
+							placeholder="输入审批意见..."></textarea>
+					</div>
 
-				<table border="1" style="width: 100%">
-					<tr>
-						<th style="width: 60%;">合同名称</th>
-						<th>起草时间</th>
-
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-
-					</tr>
-				</table>
+				</div>
+				<br> <br> <br> <br> <br> <br>
+				<div style="width: 20%; margin-left: 200px">
+					<input type="submit" value="提交"> <input type="button"
+						value="重置" onclick="window.location.href='../HTML/approve.html'">
+				</div>
 			</form>
 		</div>
 	</div>

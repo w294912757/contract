@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>已审批合同</title>
+<title>定稿合同</title>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -13,6 +13,7 @@
 		}
 	}
 </script>
+
 <link rel="stylesheet" type="text/css" href="../CSS/background.css">
 </head>
 <body>
@@ -37,26 +38,18 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="approvedform" id="approvedform" method="get">
-				<h3>已审批合同</h3>
-				查找已审批合同:<input type="text" id="contractname" name="contractname"
-					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
-				<button style="height: 20px; width: 55px; text-align: center;"
-					id="searchbutton">search</button>
-				<br>
-
-				<table border="1" style="width: 100%">
-					<tr>
-						<th style="width: 60%;">合同名称</th>
-						<th>起草时间</th>
-
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-
-					</tr>
-				</table>
+			<form name="confirmform" id="confirmform" method="get"
+				action="toapprove.html">
+				<h3>定稿合同</h3>
+				合同名称:<font> XXX</font> <br>客户:<font> XXX</font><br>开始时间:<font>
+					XXX</font> <br>结束时间:<font> XXX</font> <br> 合同内容:<br>
+				<textarea
+					style="overflow: scroll; overflow-x: hidden; height: 200px; width: 80%;"
+					form="confirmform" name="confirmcontent" id="confirmcontent"></textarea>
+				<br> 附件:<font style="color: black;">无文件 </font> <br> <br>
+				<input type="submit" value="提交" style="margin-left: 40px"> <input
+					type="button" value="重置"
+					onclick="window.location.href='../HTML/confirm.html'">
 			</form>
 		</div>
 	</div>

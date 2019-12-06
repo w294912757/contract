@@ -12,17 +12,13 @@ fieldset {
 }
 </style>
 <script type="text/javascript">
-	function Login() {
-		//数据库check
-		alert("提交成功");
-		return true;
-	}
+	
 </script>
 </head>
 <body>
 	<div>
 		<form name="login" id="loginform" method="get"
-			onsubmit="return Login()" action="../HTML/main.html">
+			action="../HTML/main.html">
 			<fieldset>
 				<legend>登录</legend>
 				<br> 用户名:<input type="text" name="username" id="username"
@@ -31,7 +27,7 @@ fieldset {
 					style="margin-left: 42px; width: 150px;"><br> <br>
 				<input type="button" value="注册" style="margin-left: 80px"
 					onclick="window.location.href='../HTML/signup.html'"> <input
-					type="submit" value="登录" style="margin-left: 10px">
+					type="submit" value="登录">
 			</fieldset>
 		</form>
 	</div>
