@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>签订合同</title>
+<title>合同管理系统</title>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -12,11 +12,15 @@
 
 		}
 	}
-</script>
 
+	function Check() {
+
+	}
+</script>
 <link rel="stylesheet" type="text/css" href="../CSS/background.css">
 </head>
 <body>
+
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
 	<div style="width: 1500px; height: 100px; background-color: black;"></div>
 	<div class="navigationbackground">
@@ -38,18 +42,11 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="signform" id="signform" method="get" action="signed.html">
-				<h3>签订合同</h3>
-				合同名称:<font> XXX</font> <br> 客户:<font> XXX</font> <br>签订信息:<br>
-				<textarea
-					style="overflow: scroll; overflow-x: hidden; height: 200px; width: 80%;"
-					form="signform" name="signcontent" id="signcontent"
-					placeholder="签订信息..."></textarea>
-				<br> <br> <input type="submit" value="提交"
-					style="margin-left: 40px"> <input type="button" value="重置"
-					onclick="window.location.href='../HTML/sign.html'">
-			</form>
+			<p>您是新用户，没有合同操作权限，等待管理员为您配置权限</p>
+
 		</div>
 	</div>
+
+
 </body>
 </html>
