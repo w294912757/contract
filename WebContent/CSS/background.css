@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.navigationbackground {
+	float: left;
+	background-color: red;
+	width: 30%;
+	height: 400px;
+}
+
+.navigation {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	margin-left: 50%;
+}
+
+.mainbackground {
+	float: right;
+	background-color: green;
+	width: 70%;
+	height: 500px;
+}
+
+.mainview {
+	width: 50%;
+	margin-left: 100px;
+}
