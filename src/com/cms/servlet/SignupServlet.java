@@ -22,8 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/SignupServlet")
 public class SignupServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 1L; 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,6 +30,7 @@ public class SignupServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,14 +38,12 @@ public class SignupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 将输出转换为中文
-	    request.setCharacterEncoding("UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html");
+	    //request.setCharacterEncoding("UTF-8");
+	    //response.setCharacterEncoding("UTF-8");
+	    //response.setContentType("text/html");
 	    
-	    Statement st = null;
+	    
 	    ResultSet rs = null;
-	    PreparedStatement ptst = null;
-	    
 	    List<String> usernameList = new ArrayList<String>();
 		
 		// 获取参数
@@ -54,7 +52,7 @@ public class SignupServlet extends HttpServlet {
 		String repass = request.getParameter("repass");
 		 
 		// 注册验证信息
-		if(!pass.equals(repass)){
+		if(pass.equals(repass)==false){
 			request.getSession().setAttribute("pwdFail", "yes");
 			response.sendRedirect("signup.html");
         }
@@ -75,71 +73,40 @@ public class SignupServlet extends HttpServlet {
 			response.sendRedirect("signup.html");
 		}
 		else {
-			Connection conn = null;
 			try {
-				conn = new GetConnection().getConnection();
 				
-				try {
-					//遍历user表中name字段
-					String select = "select name from user";
-					st = conn.createStatement();
-					rs = st.executeQuery(select);
+				String select = "select name from user;";
+				rs = Database.getDatabase().parseQuery(select);
 					
-					//将name字段的所有数据存入集合中
-					while (rs.next()){
-						usernameList.add(rs.getString(1));
-					}
-					rs.close();
-					st.close();
-					
-				} catch (SQLException e){
-					e.printStackTrace();
+				//将name字段的所有数据存入集合中
+				while (rs.next()){
+					usernameList.add(rs.getString(1));
 				}
+				rs.close();
 				
-			    if(usernameList.contains(username)){
-			    	request.getSession().setAttribute("userExist", "yes");
+				if(usernameList.contains(username)){
+				    request.getSession().setAttribute("userExist", "yes");
 					response.sendRedirect("signup.html");
-			    }
-			    else {
-			    	String insert = "insert into user(name,password) values(?,?)";
-			    	try {
-			    		ptst = conn.prepareStatement(insert);
-			    		
-			    		//设置ptst参数
-			    		ptst.setString(1,username);
-			    		ptst.setString(2,pass);
-			    		
-			    		//执行sql语句
-			    		ptst.execute();
-			    		
-			    		//关闭ResultSet和Statement链接
-			    		ptst.close();
-			    	} catch (SQLException e) {
-			    		e.printStackTrace();
-			    	}
-			    	
-			    	//把用户消息放进session中
-		            HttpSession session = request.getSession();
-		            session.setAttribute("username",username);
-		            session.setAttribute("pass",pass);
-		            request.getRequestDispatcher("login.html").forward(request,response);
-		            
-			    }
-			    
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} finally {
-		    		try {
-		    			//关闭Connection链接
-		    			if (conn != null){
-		    				conn.close();
-		    			}
-		    		} catch (SQLException e){
-		    			e.printStackTrace();
-		    		}
-		    	}
-		    }
+				 }
+				 else {
+				    String insert = "insert into user(name,password) values('"+username+"','"+pass+"');";
+				    Database.getDatabase().parseUpdate(insert);
+				    	
+				    //把用户消息放进session中
+			        HttpSession session = request.getSession();
+			        session.setAttribute("username",username);
+			        request.getRequestDispatcher("login.html").forward(request,response);
+				}
+
+		
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+
+			 
+		
+			
+		}
             
 	}
 

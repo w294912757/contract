@@ -49,21 +49,12 @@ fieldset {
         alert("用户名已存在，请重新输入")
     }
     
-    
-	function charCheck(str) {
-		for (var i = 0; i < str.length; i++) {
-			var a = str.charAt(i);
-			if (!((isalpha(a)) || (isalnum(a)) || ((a == '_')) || ((a >= 0x4e00 && a <= 0x9fa6)))) {
-				return false;
-			}
-		}
-		return true;
-	}
+
 </script>
 </head>
 <body>
 	<div>
-		<form name="signup" id="signupform" method="get" >
+		<form name="signup" id="signupform" method="get" action="SignupServlet">
 			<fieldset>
 				<legend>注册</legend>
 				<br> 用户名:<input type="text" id="username" name="username"
@@ -75,9 +66,9 @@ fieldset {
 				<br>确认密码:<input type="password" id="repass" name="repass"
 					style="margin-left: 10px; width: 150px;"> <br> <font
 					class="words">重复密码设置一定要与上边密码设置一致</font> <br> <br> <input
-					type="button" value="提交" onclick="submit();"> <input
+					type="submit" value="提交" > <input
 					type="button" value="返回登陆页面"
-					onclick="window.location.href='../login.html'">
+					onclick="window.location.href='login.html'">
 			</fieldset>
 
 		</form>
