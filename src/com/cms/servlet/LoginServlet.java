@@ -1,6 +1,11 @@
 package com.cms.servlet;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +50,38 @@ public class LoginServlet extends HttpServlet {
 		String pass = request.getParameter("pass");
 		 
 		// 登录验证信息
-		if (username.equals("admin") && pass.equals("123456")){
-			// 如果验证成功，则转发main.html页面
-			request.getRequestDispatcher("main.html").forward(request, response);
+		if (username != null && pass != null){
+			
+			String select = "select * from user " + "where name = '" + username + "' and password = '" + pass + "';";
+			Database db = Database.getDatabase();
+			ResultSet rs = db.parseQuery(select);
+			
+			int count = 0;
+			try {
+	            while (rs.next()) {
+	                count += 1;
+	            }
+	        } catch (SQLException ex) {
+	            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+			
+	        if (count == 0) {
+	        	//用户名或密码错误
+	        	//提示框
+	        	
+	        	response.sendRedirect("login.html");
+	        } else {
+	        	// 如果验证成功，则转发main.html页面
+	        	request.getRequestDispatcher("main.html").forward(request, response);
+	        }
+	        
 		}
 		else{
 			response.sendRedirect("login.html");
 		}
 	}
+	
+
+
 
 }

@@ -40,11 +40,8 @@ public class SignupServlet extends HttpServlet {
 		// 将输出转换为中文
 	    //request.setCharacterEncoding("UTF-8");
 	    //response.setCharacterEncoding("UTF-8");
-	    //response.setContentType("text/html");
+	    response.setContentType("text/html");
 	    
-	    
-	    ResultSet rs = null;
-	    List<String> usernameList = new ArrayList<String>();
 		
 		// 获取参数
 		String username = request.getParameter("username");
@@ -53,22 +50,27 @@ public class SignupServlet extends HttpServlet {
 		 
 		// 注册验证信息
 		if(pass.equals(repass)==false){
+			//两次输入密码不一致
 			request.getSession().setAttribute("pwdFail", "yes");
 			response.sendRedirect("signup.html");
         }
 		else if(username == ""){
+			//用户名为空
             request.getSession().setAttribute("userNull","yes");
             response.sendRedirect("signup.html");
         }
 		else if(username.length() < 4){
+			//用户名长度小于4
 			request.getSession().setAttribute("userLength", "yes");
 			response.sendRedirect("signup.html");
 		}
 		else if(pass == ""){
+			//密码为空
 			request.getSession().setAttribute("passNull", "yes");
 			response.sendRedirect("signup.html");
 		}
 		else if(pass.length() < 6){
+			//密码长度小于6
 			request.getSession().setAttribute("passLength", "yes");
 			response.sendRedirect("signup.html");
 		}
@@ -76,7 +78,8 @@ public class SignupServlet extends HttpServlet {
 			try {
 				
 				String select = "select name from user;";
-				rs = Database.getDatabase().parseQuery(select);
+				ResultSet rs = Database.getDatabase().parseQuery(select);
+				List<String> usernameList = new ArrayList<String>();
 					
 				//将name字段的所有数据存入集合中
 				while (rs.next()){
@@ -85,10 +88,12 @@ public class SignupServlet extends HttpServlet {
 				rs.close();
 				
 				if(usernameList.contains(username)){
+					//该用户名已存在
 				    request.getSession().setAttribute("userExist", "yes");
 					response.sendRedirect("signup.html");
 				 }
-				 else {
+				else {
+					//符合注册条件，插入数据库
 				    String insert = "insert into user(name,password) values('"+username+"','"+pass+"');";
 				    Database.getDatabase().parseUpdate(insert);
 				    	

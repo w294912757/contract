@@ -18,9 +18,9 @@ public class Database {
 	private static final String PASSWORD = "nyqm1221";
 	
 	//连接用变量
-	private Connection con = null;
-	private Statement stmt = null;
-	private ResultSet rs = null;
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
 	
 	private Database() {
 		try {
