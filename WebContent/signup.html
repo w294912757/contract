@@ -19,6 +19,7 @@ fieldset {
 </style>
 
 <script type="text/javascript">
+
 	var status1 = '${sessionScope.pwdFail}';
 	if (status1 == 'yes') {
 		alert("两次密码输入不一样，请重新输入")
@@ -49,20 +50,44 @@ fieldset {
 		alert("用户名已存在，请重新输入")
 	}
 
-	function charCheck(str) {
-		for (var i = 0; i < str.length; i++) {
-			var a = str.charAt(i);
-			if (!((isalpha(a)) || (isalnum(a)) || ((a == '_')) || ((a >= 0x4e00 && a <= 0x9fa6)))) {
-				return false;
-			}
-		}
-		return true;
-	}
+    var status1 = '${sessionScope.pwdFail}';
+    if (status1 =='yes'){
+        alert("两次密码输入不一样，请重新输入")
+    }
+    
+    var status2 = '${sessionScope.userNull}';
+    if (status2 =='yes'){
+        alert("用户名不可为空，请重新输入")
+    }
+    
+    var status3 = '${sessionScope.userLength}';
+    if (status3 =='yes'){
+        alert("用户名长度不可小于4，请重新输入")
+    }
+    
+    var status4 = '${sessionScope.passNull}';
+    if (status4 =='yes'){
+        alert("密码不可为空，请重新输入")
+    }
+    
+    var status5 = '${sessionScope.passLength}';
+    if (status5 =='yes'){
+        alert("密码长度不可小于6，请重新输入")
+    }
+    
+    var status6 = '${sessionScope.userExist}';
+    if (status6 =='yes'){
+        alert("用户名已存在，请重新输入")
+    }
+    
+
 </script>
 </head>
 <body>
 	<div>
+
 		<form name="signup" id="signupform" method="get">
+
 			<fieldset>
 				<legend>注册</legend>
 				<br> 用户名:<input type="text" id="username" name="username"
@@ -74,9 +99,11 @@ fieldset {
 				<br>确认密码:<input type="password" id="repass" name="repass"
 					style="margin-left: 10px; width: 150px;"> <br> <font
 					class="words">重复密码设置一定要与上边密码设置一致</font> <br> <br> <input
+
 					type="button" value="提交" onclick="submit();">
 				<button onclick="window.location.href='login.html'"
 					style="width: 125px; height: 25px; text-align: center;">返回登陆页面</button>
+
 			</fieldset>
 
 		</form>
