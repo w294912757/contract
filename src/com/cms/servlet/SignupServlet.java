@@ -23,130 +23,128 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/SignupServlet")
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SignupServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SignupServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ½«Êä³ö×ª»»ÎªÖÐÎÄ
-	    request.setCharacterEncoding("UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html");
-	    
-	    Statement st = null;
-	    ResultSet rs = null;
-	    PreparedStatement ptst = null;
-	    
-	    List<String> usernameList = new ArrayList<String>();
-		
-		// »ñÈ¡²ÎÊý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+
+		Statement st = null;
+		ResultSet rs = null;
+		PreparedStatement ptst = null;
+
+		List<String> usernameList = new ArrayList<String>();
+
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
 		String repass = request.getParameter("repass");
-		 
-		// ×¢²áÑéÖ¤ÐÅÏ¢
-		if(!pass.equals(repass)){
+
+		// ×¢ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ï¢
+		if (!pass.equals(repass)) {
 			request.getSession().setAttribute("pwdFail", "yes");
 			response.sendRedirect("signup.html");
-        }
-		else if(username == ""){
-            request.getSession().setAttribute("userNull","yes");
-            response.sendRedirect("signup.html");
-        }
-		else if(username.length() < 4){
+		} else if (username == "") {
+			request.getSession().setAttribute("userNull", "yes");
+			response.sendRedirect("signup.html");
+		} else if (username.length() < 4) {
 			request.getSession().setAttribute("userLength", "yes");
 			response.sendRedirect("signup.html");
-		}
-		else if(pass == ""){
+		} else if (pass == "") {
 			request.getSession().setAttribute("passNull", "yes");
 			response.sendRedirect("signup.html");
-		}
-		else if(pass.length() < 6){
+		} else if (pass.length() < 6) {
 			request.getSession().setAttribute("passLength", "yes");
 			response.sendRedirect("signup.html");
-		}
-		else {
+		} else {
 			Connection conn = null;
 			try {
 				conn = new GetConnection().getConnection();
-				
+
 				try {
-					//±éÀúuser±íÖÐname×Ö¶Î
+					// ï¿½ï¿½ï¿½ï¿½userï¿½ï¿½ï¿½ï¿½nameï¿½Ö¶ï¿½
 					String select = "select name from user";
 					st = conn.createStatement();
 					rs = st.executeQuery(select);
-					
-					//½«name×Ö¶ÎµÄËùÓÐÊý¾Ý´æÈë¼¯ºÏÖÐ
-					while (rs.next()){
+
+					// ï¿½ï¿½nameï¿½Ö¶Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ë¼¯ï¿½ï¿½ï¿½ï¿½
+					while (rs.next()) {
 						usernameList.add(rs.getString(1));
 					}
 					rs.close();
 					st.close();
-					
-				} catch (SQLException e){
+
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
-			    if(usernameList.contains(username)){
-			    	request.getSession().setAttribute("userExist", "yes");
+
+				if (usernameList.contains(username)) {
+					request.getSession().setAttribute("userExist", "yes");
 					response.sendRedirect("signup.html");
-			    }
-			    else {
-			    	String insert = "insert into user(name,password) values(?,?)";
-			    	try {
-			    		ptst = conn.prepareStatement(insert);
-			    		
-			    		//ÉèÖÃptst²ÎÊý
-			    		ptst.setString(1,username);
-			    		ptst.setString(2,pass);
-			    		
-			    		//Ö´ÐÐsqlÓï¾ä
-			    		ptst.execute();
-			    		
-			    		//¹Ø±ÕResultSetºÍStatementÁ´½Ó
-			    		ptst.close();
-			    	} catch (SQLException e) {
-			    		e.printStackTrace();
-			    	}
-			    	
-			    	//°ÑÓÃ»§ÏûÏ¢·Å½øsessionÖÐ
-		            HttpSession session = request.getSession();
-		            session.setAttribute("username",username);
-		            session.setAttribute("pass",pass);
-		            request.getRequestDispatcher("login.html").forward(request,response);
-		            
-			    }
-			    
+				} else {
+					String insert = "insert into user(name,password) values(?,?)";
+					try {
+						ptst = conn.prepareStatement(insert);
+
+						// ï¿½ï¿½ï¿½ï¿½ptstï¿½ï¿½ï¿½ï¿½
+						ptst.setString(1, username);
+						ptst.setString(2, pass);
+
+						// Ö´ï¿½ï¿½sqlï¿½ï¿½ï¿½
+						ptst.execute();
+
+						// ï¿½Ø±ï¿½ResultSetï¿½ï¿½Statementï¿½ï¿½ï¿½ï¿½
+						ptst.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+
+					// ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½Å½ï¿½sessionï¿½ï¿½
+					HttpSession session = request.getSession();
+					session.setAttribute("username", username);
+					session.setAttribute("pass", pass);
+					request.getRequestDispatcher("login.html").forward(request, response);
+
+				}
+
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} finally {
-		    		try {
-		    			//¹Ø±ÕConnectionÁ´½Ó
-		    			if (conn != null){
-		    				conn.close();
-		    			}
-		    		} catch (SQLException e){
-		    			e.printStackTrace();
-		    		}
-		    	}
-		    }
-            
+				try {
+					// ï¿½Ø±ï¿½Connectionï¿½ï¿½ï¿½ï¿½
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

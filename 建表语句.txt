@@ -1,0 +1,25 @@
+//table customer 顾客
+create table customer(id integer not null,num varchar(20) not null,name varchar(40) not null,address varchar(400) not null,tel varchar(20) not null,fax varchar(20),code varchar(10),bank varchar(50),account varchar(50),del integer not null,primary key(id));
+
+//table contract 合同
+create table contract(id integer not null,num varchar(20) not null,name varchar(40) not null,user_id integer,customer varchar(40),content text not null,beginTime date not null,endTime date not null,del integer not null,primary key(id));
+
+//table contract_attachment 合同附件
+create table contract_attachment(id integer not null,fileName varchar(100) not null,path varchar(100) not null,type varchar(20) not null,uploadTime timestamp not null,del integer not null,con_id integer not null,primary key(id,con_id),foreign key(id) references contract(id));
+
+//table contract_state 合同状态
+create table contract_state(id integer not null,type integer not null,time timestamp not null,del integer not null,primary key(id),foreign key(id) references contract(id));
+
+//table user 用户
+create table user(id integer not null,name varchar(40) not null,password varchar(20) not null,del integer not null,primary key(id));
+
+//table role 角色
+create table role(id integer not null,name varchar(40) not null,description varchar(100) not null,del integer not null,functions varchar(500),contract_draft boolean not null,contract_confirm boolean not null,contract_query boolean not null,contract_delete boolean not null,process_contersign boolean not null,process_approve boolean not null,process_sign boolean not null,process_distribute_contersign boolean not null,process_distribute_approve boolean not null,process_distribute_sign boolean not null,process_query boolean not null,user_insert boolean not null,user_alter boolean not null,user_query boolean not null,user_delete boolean not null,role_insert boolean not null,role_alter boolean not null,role_query boolean not null,role_delete boolean not null,authority_distribute boolean not null,customer_insert boolean not null,customer_alter boolean not null,customer_query boolean not null,customer_delete boolean not null,primary key(id));
+
+//table privilege 权限
+create table privilege(rid integer not null,uid integer not null,userName varchar(20) not null,roleName varchar(20) not null,description varchar(100) not null,primary key(rid,uid),foreign key(rid) references role(id),foreign key(uid) references user(id));
+
+//table contract_process 合同过程
+create table contract_process(cid integer not null,uid integer not null,type integer not null,state integer not null,userName varchar(40),content text not null,time timestamp not null,primary key(cid,uid),foreign key(cid) references contract(id),foreign key(uid) references user(id));
+
+//仅用于本地建表与调试

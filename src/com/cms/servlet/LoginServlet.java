@@ -13,43 +13,46 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request,response);
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ½«Êä³ö×ª»»ÎªÖÐÎÄ
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
 		request.setCharacterEncoding("UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html");
-		
-		// »ñÈ¡²ÎÊý
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
-		 
-		// µÇÂ¼ÑéÖ¤ÐÅÏ¢
-		if (username.equals("admin") && pass.equals("123456")){
-			// Èç¹ûÑéÖ¤³É¹¦£¬Ôò×ª·¢main.htmlÒ³Ãæ
+
+		// ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½Ï¢
+		if (username.equals("admin") && pass.equals("123456")) {
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½main.htmlÒ³ï¿½ï¿½
 			request.getRequestDispatcher("main.html").forward(request, response);
-		}
-		else{
+		} else {
 			response.sendRedirect("login.html");
 		}
 	}
