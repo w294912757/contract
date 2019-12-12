@@ -37,7 +37,21 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<div class="mainview">
-				<p>欢迎管理员</p>
+				<button id="insertuser" name="insertuser"
+					style="margin-left: 26px; width: 150px; text-align: center;"
+					value="info"
+					onclick="window.location.href = 'admin_usermanage.jsp'">用户管理</button>
+				<br> <br>
+				<button id="queryuser" name="queryuser"
+					style="margin-left: 26px; width: 150px; text-align: center;"
+					value="info"
+					onclick="window.location.href = 'admin_charactermanage.jsp'">角色管理</button>
+				<br> <br>
+				<button id="deleteuser" name="deleteuser"
+					style="margin-left: 26px; width: 150px; text-align: center;"
+					value="info"
+					onclick="window.location.href = 'admin_authoritydistribute.jsp'">分配权限</button>
+				<br> <br>
 
 			</div>
 		</div>

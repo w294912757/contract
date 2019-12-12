@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -37,10 +37,31 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<div class="mainview">
-				<p>欢迎管理员</p>
+				<form name="admininfoqueryform" id="admininfoqueryform" method="get"
+					action="">
+					<h3>合同信息查询</h3>
+					查找合同:<input type="text" id="contractname" name="contractname"
+						style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
+					<button style="height: 20px; width: 55px; text-align: center;"
+						id="searchbutton">search</button>
+					<br>
+
+					<table border="1" style="width: 100%">
+						<tr>
+							<th style="width: 60%;">合同名称</th>
+							<th>起草时间</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+
+						</tr>
+					</table>
+				</form>
 
 			</div>
 		</div>
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
 </html>

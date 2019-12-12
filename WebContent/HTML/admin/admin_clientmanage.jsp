@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 	<div class="navigationbackground">
 		<div class="navigation">
 
-		<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp">合同信息查询</a>
+			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp">合同信息查询</a>
 			<br> <a href="admin_processquery.jsp">合同流程查询</a> <br> <br>
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
@@ -36,11 +36,19 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<div class="mainview">
-				<p>欢迎管理员</p>
+			<button id="insertcharacter" name="insertcharacter"
+				style="margin-left: 26px; width: 150px; text-align: center;"
+				value="info"
+				onclick="window.location.href = 'admin_insertclient.jsp'">新增客户</button>
+			<br> <br>
+			<button id="querycharacter" name="querycharacter"
+				style="margin-left: 26px; width: 150px; text-align: center;"
+				value="info"
+				onclick="window.location.href = 'admin_queryclient.jsp'">查询客户</button>
+			<br> <br>
 
-			</div>
 		</div>
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
 </html>

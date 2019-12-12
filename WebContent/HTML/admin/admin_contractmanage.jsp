@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -37,10 +37,21 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<div class="mainview">
-				<p>欢迎管理员</p>
+				<button id="insertcontract" name="insertcontract"
+					style="margin-left: 26px; width: 150px; text-align: center;"
+					value="info"
+					onclick="window.location.href = 'admin_insertcontract.jsp'">新增合同</button>
+				<br> <br>
+				<button id="altercontract" name="altercontract"
+					style="margin-left: 26px; width: 150px; text-align: center;"
+					value="info"
+					onclick="window.location.href = 'admin_altercontract.jsp'">修改合同</button>
+				<br> <br>
+
 
 			</div>
 		</div>
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
 </html>

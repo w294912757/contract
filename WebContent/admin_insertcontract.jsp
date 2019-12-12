@@ -56,7 +56,7 @@
 					style="color: black;">未选择文件 </font> <br> <br> <input
 					type="submit" value="提交" style="margin-left: 40px"> <input
 					type="button" value="重置" style="margin-left: 10px"
-					onclick="window.location.href=' admin_draft.jsp'">
+					onclick="window.location.href=' admin_insertcontract.jsp'">
 			</form>
 		</div>
 	</div>
