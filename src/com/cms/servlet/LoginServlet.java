@@ -18,70 +18,71 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request,response);
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ½«Êä³ö×ª»»ÎªÖÐÎÄ
-		//request.setCharacterEncoding("UTF-8");
-	    //response.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html");
-		
-		// »ñÈ¡²ÎÊý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+		// request.setCharacterEncoding("UTF-8");
+		// response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
-		 
-		// µÇÂ¼ÑéÖ¤ÐÅÏ¢
-		if (username != null && pass != null){
-			
+
+		// ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½Ï¢
+		if (username != null && pass != null) {
+
 			String select = "select * from user " + "where name = '" + username + "' and password = '" + pass + "';";
 			Database db = Database.getDatabase();
 			ResultSet rs = db.parseQuery(select);
-			
+
 			int count = 0;
 			try {
-	            while (rs.next()) {
-	                count += 1;
-	            }
-	        } catch (SQLException ex) {
-	            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-	        }
-			
-	        if (count == 0) {
-	        	//ÓÃ»§Ãû»òÃÜÂë´íÎó
-	        	//ÌáÊ¾¿ò
-	        	
-	        	response.sendRedirect("login.html");
-	        } else {
-	        	// Èç¹ûÑéÖ¤³É¹¦£¬Ôò×ª·¢main.htmlÒ³Ãæ
-	        	request.getRequestDispatcher("main.html").forward(request, response);
-	        }
-	        
-		}
-		else{
+				while (rs.next()) {
+					count += 1;
+				}
+			} catch (SQLException ex) {
+				Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+			}
+
+			if (count == 0) {
+				// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				// ï¿½ï¿½Ê¾ï¿½ï¿½
+
+				response.sendRedirect("login.html");
+			} else {
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½main.htmlÒ³ï¿½ï¿½
+				request.getRequestDispatcher("main.html").forward(request, response);
+			}
+
+		} else {
 			response.sendRedirect("login.html");
 		}
+		// TODO Auto-generated method stub
+
 	}
-	
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
 
 }

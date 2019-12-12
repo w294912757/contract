@@ -19,9 +19,6 @@ fieldset {
 </style>
 
 <script type="text/javascript">
-	function tologin() {
-		window.location.href = 'login.html';
-	}
 	var status1 = '${sessionScope.pwdFail}';
 	if (status1 == 'yes') {
 		alert("两次密码输入不一样，请重新输入")
@@ -86,7 +83,8 @@ fieldset {
 <body>
 	<div>
 
-		<form name="signup" id="signupform" method="get">
+		<form name="signup" id="signupform" method="get"
+			action="SignupServlet">
 
 			<fieldset>
 				<legend>注册</legend>
@@ -99,8 +97,8 @@ fieldset {
 				<br>确认密码:<input type="password" id="repass" name="repass"
 					style="margin-left: 10px; width: 150px;"> <br> <font
 					class="words">重复密码设置一定要与上边密码设置一致</font> <br> <br> <input
-					type="button" value="提交">
-				<button onclick="tologin();"
+					type="submit" value="提交">
+				<button onclick="window.location.href = 'login.html'"
 					style="width: 125px; height: 25px; text-align: center;"
 					type="button">返回登陆页面</button>
 
