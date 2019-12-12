@@ -30,7 +30,9 @@ public class Database {
 
 			// 打开链接
 			System.out.println("连接数据库...");
-			con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+			if (con==null||con.isClosed()) {
+	            con=DriverManager.getConnection(DB_URL, USER, PASSWORD);
+	        }
 
 			// 执行查询
 			System.out.println("实例化Statement对象...");

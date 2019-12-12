@@ -63,14 +63,14 @@ public class LoginServlet extends HttpServlet {
 				// �û������������
 				// ��ʾ��
 
-				response.sendRedirect("login.html");
+				response.sendRedirect("login.jsp");
 			} else {
-				// �����֤�ɹ�����ת��main.htmlҳ��
-				request.getRequestDispatcher("main.html").forward(request, response);
+				// �����֤�ɹ�����ת��main.jspҳ��
+				request.getRequestDispatcher("main.jsp").forward(request, response);
 			}
 
 		} else {
-			response.sendRedirect("login.html");
+			response.sendRedirect("login.jsp");
 		}
 		// TODO Auto-generated method stub
 

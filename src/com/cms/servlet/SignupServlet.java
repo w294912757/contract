@@ -36,37 +36,42 @@ public class SignupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// �����ת��Ϊ����
+		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 
-		// ��ȡ����
+		// 获取参数
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
 		String repass = request.getParameter("repass");
-
-		// ע����֤��Ϣ
-		if (pass.equals(repass) == false) {
-			// �����������벻һ��
+		// 注册验证信息
+		boolean check = false;
+		if (!pass.equals(repass) && check == false) {
+			// 两次输入密码不一致
+			check = true;
 			request.getSession().setAttribute("pwdFail", "yes");
-			response.sendRedirect("signup.html");
-		} else if (username == "") {
-			// �û���Ϊ��
+			response.sendRedirect("signup.jsp");
+		} else if (username.equals("") && check == false) {
+			// 用户名为空
+			check = true;
 			request.getSession().setAttribute("userNull", "yes");
-			response.sendRedirect("signup.html");
-		} else if (username.length() < 4) {
-			// �û�������С��4
+			response.sendRedirect("signup.jsp");
+		} else if (username.length() < 4 && check == false) {
+			// 用户名长度小于4
+			check = true;
 			request.getSession().setAttribute("userLength", "yes");
-			response.sendRedirect("signup.html");
-		} else if (pass == "") {
-			// ����Ϊ��
+			response.sendRedirect("signup.jsp");
+		} else if (pass.equals("") && check == false) {
+			// 密码为空
+			check = true;
 			request.getSession().setAttribute("passNull", "yes");
-			response.sendRedirect("signup.html");
-		} else if (pass.length() < 6) {
-			// ���볤��С��6
+			response.sendRedirect("signup.jsp");
+		} else if (pass.length() < 6 && check == false) {
+			// 密码长度小于6
+			check = true;
 			request.getSession().setAttribute("passLength", "yes");
-			response.sendRedirect("signup.html");
+			response.sendRedirect("signup.jsp");
 		} else {
 			try {
 
@@ -74,25 +79,25 @@ public class SignupServlet extends HttpServlet {
 				ResultSet rs = Database.getDatabase().parseQuery(select);
 				List<String> usernameList = new ArrayList<String>();
 
-				// ��name�ֶε��������ݴ��뼯����
+				// 将name字段的所有数据存入集合中
 				while (rs.next()) {
 					usernameList.add(rs.getString(1));
 				}
 				rs.close();
 
 				if (usernameList.contains(username)) {
-					// ���û����Ѵ���
+					// 该用户名已存在
 					request.getSession().setAttribute("userExist", "yes");
-					response.sendRedirect("signup.html");
+					response.sendRedirect("signup.jsp");
 				} else {
-					// ����ע���������������ݿ�
+					// 符合注册条件，插入数据库
 					String insert = "insert into user(name,password) values('" + username + "','" + pass + "');";
 					Database.getDatabase().parseUpdate(insert);
 
-					// ���û���Ϣ�Ž�session��
+					// 把用户消息放进session中
 					HttpSession session = request.getSession();
 					session.setAttribute("username", username);
-					request.getRequestDispatcher("login.html").forward(request, response);
+					request.getRequestDispatcher("login.jsp").forward(request, response);
 				}
 
 			} catch (SQLException e) {
