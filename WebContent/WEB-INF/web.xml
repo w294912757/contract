@@ -26,4 +26,14 @@
 		<servlet-name>SignupServlet</servlet-name>
 		<url-pattern>/CMS/SignupServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>TocontersignServlet</servlet-name>
+		<servlet-class>com.cms.servlet.TocontersignServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TocontersignServlet</servlet-name>
+		<url-pattern>/CMS/TocontersignServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
