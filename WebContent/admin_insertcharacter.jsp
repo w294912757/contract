@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -36,34 +36,43 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="insertcharacter" id="insertcharacterform" method="get">
+			<form name="insertcharacter" id="insertcharacterform" method="get" action="Admininsertcharacter">
 
 				角色名称:<br> <input type="text" id="charactername"
 					name="charactername" style="width: 150px;"><br> 描述:
 				<textarea
 					style="overflow: scroll; overflow-x: hidden; height: 100px; width: 100%;"
-					form="draftform" name="draftcontent" id="draftcontent"></textarea>
-				权限配置:<br> 合同管理:<br> <input type="checkbox">起草合同 <input
-					type="checkbox">定稿合同 <input type="checkbox">查询合同 <input
-					type="checkbox">删除合同<br> 流程管理:<br> <input
-					type="checkbox">会签合同<input type="checkbox">审批合同 <input
-					type="checkbox">签订合同 <input type="checkbox">分配会签<input
-					type="checkbox">分配审批 <input type="checkbox">分配签订<input
-					type="checkbox">流程查询<br> 用户管理:<br> <input
-					type="checkbox">新增用户 <input type="checkbox">编辑用户 <input
-					type="checkbox">查询用户 <input type="checkbox">删除用户<br>
-				角色管理:<br> <input type="checkbox">新增角色 <input
-					type="checkbox">编辑角色 <input type="checkbox">查询角色 <input
-					type="checkbox">删除角色<br> 权限管理:<br> <input
-					type="checkbox">配置权限 <br>客户管理:<br> <input
-					type="checkbox">新增客户 <input type="checkbox">编辑客户 <input
-					type="checkbox">查询客户 <input type="checkbox">删除客户<br>
+					name="description" id="description"></textarea>
+				权限配置:<br> 合同管理:<br> <input type="checkbox" name="checkbox"
+					value="起草合同">起草合同 <input type="checkbox" name="checkbox"
+					value="定稿合同">定稿合同 <input type="checkbox" name="checkbox"
+					value="查询合同">查询合同 <input type="checkbox" name="checkbox"
+					value="删除合同">删除合同<br> 流程管理:<br> <input
+					type="checkbox" name="checkbox" value="会签合同">会签合同<input
+					type="checkbox" name="checkbox" value="审批合同">审批合同 <input
+					type="checkbox" name="checkbox" value="签订合同">签订合同 <input
+					type="checkbox" name="checkbox" value="分配会签">分配会签<input
+					type="checkbox" name="checkbox" value="分配审批">分配审批 <input
+					type="checkbox" name="checkbox" value="分配签订">分配签订<input
+					type="checkbox" name="checkbox" value="流程查询">流程查询<br>
+				用户管理:<br> <input type="checkbox" name="checkbox" value="新增用户">新增用户
+				<input type="checkbox" name="checkbox" value="编辑用户">编辑用户 <input
+					type="checkbox" name="checkbox" value="查询用户">查询用户 <input type="checkbox"
+					name="checkbox" value="删除用户">删除用户<br> 角色管理:<br> <input
+					type="checkbox" name="checkbox" value="新增角色">新增角色 <input type="checkbox"
+					name="checkbox" value="编辑角色">编辑角色 <input type="checkbox" name="checkbox" value="查询角色">查询角色
+				<input type="checkbox" name="checkbox" value="删除角色">删除角色<br> 权限管理:<br>
+				<input type="checkbox" name="checkbox" value="配置权限">配置权限 <br>客户管理:<br>
+				<input type="checkbox" name="checkbox" value="新增客户">新增客户 <input
+					type="checkbox" name="checkbox" value="编辑客户">编辑客户 <input type="checkbox"
+					name="checkbox" value="查询客户">查询客户 <input type="checkbox" name="checkbox" value="删除客户">删除客户<br>
 				<br> <input type="submit" value="提交" style="margin-left: 40px">
 				<input type="button" value="重置" style="margin-left: 10px"
 					onclick="window.location.href='admin_insertcharacter.jsp'">
 
 			</form>
 		</div>
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
 </html>

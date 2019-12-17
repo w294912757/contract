@@ -36,7 +36,7 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="insertuser" id="insertuserform" method="get">
+			<form name="insertuser" id="insertuserform" method="get" action="Admininsertuser">
 				<fieldset>
 					<legend>新增用户</legend>
 					<br> 用户名:<input type="text" id="username" name="username"
@@ -48,8 +48,7 @@
 					<br>确认密码:<input type="password" id="repass" name="repass"
 						style="margin-left: 10px; width: 150px;"> <br> <font
 						class="words">重复密码设置一定要与上边密码设置一致</font> <br> <br> <input
-						type="button" value="提交" onclick="submit();"> <input
-						type="button" value="重置"
+						type="submit" value="提交"> <input type="button" value="重置"
 						onclick="window.location.href='admin_insertuser.jsp'">
 				</fieldset>
 

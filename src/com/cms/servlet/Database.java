@@ -12,7 +12,7 @@ public class Database {
 
 	// JDBC驱动名和连接URL
 	private static final String JDBC = "com.mysql.cj.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/contract?useSSL=false&serverTimezone=UTC";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/contractbase?useSSL=false&serverTimezone=UTC";
 
 	// 用户名与密码
 	private static final String USER = "root";
