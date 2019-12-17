@@ -1,5 +1,8 @@
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.mysql.jdbc.Driver"%>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,13 +73,13 @@
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
 					<br> <br> <select id="confirmer" name="confirmer"
-						multiple size="6" style="float: left;">
+						multiple size="5" style="float: left;">
 						<option value="1">一</option>
 						<option value="2">二</option>
 						<option value="3">三</option>
 						<option value="4">四</option>
 						<option value="5">五</option>
-					</select> <select id="toconfirm" name="toconfirm" multiple size="6"
+					</select> <select id="toconfirm" name="toconfirm" multiple size="5"
 						style="float: right;" form="distributorform">
 
 					</select>
@@ -94,13 +97,13 @@
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
 					<br> <br> <select id="approver" name="approver" multiple
-						size="6" style="float: left;">
+						size="5" style="float: left;">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
 						<option value="5">5</option>
-					</select> <select id="toapprove" name="toapprove" multiple size="6"
+					</select> <select id="toapprove" name="toapprove" multiple size="5"
 						style="float: right;" form="distributorform">
 
 					</select>
@@ -118,13 +121,13 @@
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
 					<br> <br> <select id="signer" name="signer" multiple
-						size="6" style="float: left;">
+						size="5" style="float: left;">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
 						<option value="5">5</option>
-					</select> <select id="tosign" name="tosign" multiple size="6"
+					</select> <select id="tosign" name="tosign" multiple size="5"
 						style="float: right;" form="distributorform">
 
 					</select>
