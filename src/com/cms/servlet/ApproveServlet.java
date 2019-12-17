@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class TocontersignServlet
+ * Servlet implementation class ApproveServlet
  */
-@WebServlet("/TocontersignServlet")
-public class TocontersignServlet extends HttpServlet {
+@WebServlet("/ApproveServlet")
+public class ApproveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TocontersignServlet() {
+	public ApproveServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -51,7 +51,7 @@ public class TocontersignServlet extends HttpServlet {
             }   
 		}  
 		request.getSession().setAttribute("contractid", id);
-		response.sendRedirect("contersign.jsp");
+		response.sendRedirect("approve.jsp");
 		
 		
 	}
