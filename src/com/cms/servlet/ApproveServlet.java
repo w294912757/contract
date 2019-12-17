@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.Enumeration;
->>>>>>> master
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class TocontersignServlet
+ * Servlet implementation class ApproveServlet
  */
-@WebServlet("/TocontersignServlet")
-public class TocontersignServlet extends HttpServlet {
+@WebServlet("/ApproveServlet")
+public class ApproveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TocontersignServlet() {
+	public ApproveServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,10 +41,6 @@ public class TocontersignServlet extends HttpServlet {
 		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
-<<<<<<< HEAD
-		String contractid = request.getParameter("contractid");
-		System.out.println("CTM");
-=======
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
 		while(en.hasMoreElements()){    
@@ -58,10 +51,9 @@ public class TocontersignServlet extends HttpServlet {
             }   
 		}  
 		request.getSession().setAttribute("contractid", id);
-		response.sendRedirect("contersign.jsp");
+		response.sendRedirect("approve.jsp");
 		
 		
->>>>>>> master
 	}
 
 	/**

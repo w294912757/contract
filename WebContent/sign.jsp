@@ -42,7 +42,7 @@
 		<div class="mainview">
 			<form name="signform" id="signform" method="get" action="signed.jsp">
 				<h3>签订合同</h3>
-				合同名称:<font> XXX</font> <br> 客户:<font> XXX</font> <br>签订信息:<br>
+				合同名称:<font id="contractid"> XXX</font> <br> 客户:<font id="customerid"> XXX</font> <br>签订信息:<br>
 				<textarea
 					style="overflow: scroll; overflow-x: hidden; height: 200px; width: 80%;"
 					form="signform" name="signcontent" id="signcontent"
@@ -54,4 +54,10 @@
 		</div>
 	</div><div class="photo"></div>
 </body>
+<script>
+var status1 = '${sessionScope.contractid}';
+document.getElementById("contractid").innerHTML=status1;
+var status2 = '${sessionScope.customerid}';
+document.getElementById("customerid").innerHTML=status2;
+</script>
 </html>
