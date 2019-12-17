@@ -36,7 +36,8 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="draftform" id="draftform" method="get" action="Admininsertcontract">
+			<form name="draftform" id="draftform" method="get"
+				action="Admininsertcontract">
 				<h3>新增合同</h3>
 				合同名称:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 10px; width: 150px;"> <font

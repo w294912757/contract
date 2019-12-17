@@ -108,8 +108,7 @@ public class Admininsertcontract extends HttpServlet {
 				// 符合注册条件，插入数据库
 
 				// 把用户消息放进session中
-//				HttpSession session = request.getSession();
-//				session.setAttribute("username", username);
+
 				response.getWriter().print("<script>alert('结束时间格式错误!');window.location.href='draft.jsp'</script>");
 				response.sendRedirect("tocontersign.jsp");
 

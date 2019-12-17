@@ -37,7 +37,7 @@
 	<div class="mainbackground">
 		<div class="mainview">
 
-			<form name="insertclientform" id="insertclientform" method="get">
+			<form name="insertclientform" id="insertclientform" method="get" action="Admininsertclient">
 				<h3>添加客户</h3>
 				客户名称:<input type="text" id="clientname" name="clientname"
 					style="margin-left: 10px; width: 150px;"> <br>电话:<input
