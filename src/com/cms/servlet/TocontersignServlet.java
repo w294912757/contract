@@ -2,13 +2,13 @@ package com.cms.servlet;
 
 import java.io.IOException;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
+
 import java.util.Enumeration;
->>>>>>> master
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -44,10 +44,10 @@ public class TocontersignServlet extends HttpServlet {
 		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
-<<<<<<< HEAD
+
 		String contractid = request.getParameter("contractid");
 		System.out.println("CTM");
-=======
+
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
 		while(en.hasMoreElements()){    
@@ -61,7 +61,7 @@ public class TocontersignServlet extends HttpServlet {
 		response.sendRedirect("contersign.jsp");
 		
 		
->>>>>>> master
+
 	}
 
 	/**
