@@ -18,16 +18,16 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class ConfirmServlet
+ * Servlet implementation class AdminDelUserServlet
  */
-@WebServlet("/ConfirmServlet")
-public class ConfirmServlet extends HttpServlet {
+@WebServlet("/AdminDelUserServlet")
+public class AdminDelUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ConfirmServlet() {
+	public AdminDelUserServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -51,25 +51,11 @@ public class ConfirmServlet extends HttpServlet {
             for(int  i=0;i<values.length;i++){ 
             	id = values[i];
             }   
-		}  
-		request.getSession().setAttribute("contractid", id);
-		//查询相关信息
-		ResultSet rs = Database.getDatabase().parseQuery("select * from contract a,contract_attachment b where a.id ="+id+" and a.id=b.con_id;");
-		try {
-			while(rs.next()) {
-				request.getSession().setAttribute("customerid", rs.getString("customer"));
-				request.getSession().setAttribute("begintime", rs.getDate("beginTime"));
-				request.getSession().setAttribute("endtime", rs.getDate("endTime"));
-				request.getSession().setAttribute("attachid", rs.getString("fileName"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
-		response.sendRedirect("confirm.jsp");
+		Database.getDatabase().parseUpdate("delete from user where name ='"+id+"';");
 		
-		
+		response.sendRedirect("admin_deleteuser.jsp");
 	}
 
 	/**

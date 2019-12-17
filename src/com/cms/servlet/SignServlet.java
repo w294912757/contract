@@ -50,12 +50,12 @@ public class SignServlet extends HttpServlet {
             	id = values[i];
             }   
 		}  
-		request.getSession().setAttribute("contractid", id.toString());
+		request.getSession().setAttribute("contractid", id);
 		//查询相关信息
 		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ="+id+";");
 		try {
 			while(rs.next()) {
-				request.getSession().setAttribute("customerid", rs.getString("customer").toString());
+				request.getSession().setAttribute("customerid", rs.getString("customer"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

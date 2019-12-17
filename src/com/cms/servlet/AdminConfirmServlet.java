@@ -18,16 +18,17 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class ConfirmServlet
+ * Servlet implementation class AdminConfirmServlet/.4 
+ * ;''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''4l231
  */
-@WebServlet("/ConfirmServlet")
-public class ConfirmServlet extends HttpServlet {
+@WebServlet("/AdminConfirmServlet")
+public class AdminConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ConfirmServlet() {
+	public AdminConfirmServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -67,7 +68,7 @@ public class ConfirmServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("confirm.jsp");
+		response.sendRedirect("admin_confirm.jsp");
 		
 		
 	}
