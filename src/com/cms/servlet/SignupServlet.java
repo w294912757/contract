@@ -37,8 +37,8 @@ public class SignupServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 将输出转换为中文
-		// request.setCharacterEncoding("UTF-8");
-		// response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 
 		// 获取参数
@@ -97,7 +97,7 @@ public class SignupServlet extends HttpServlet {
 					// 把用户消息放进session中
 					HttpSession session = request.getSession();
 					session.setAttribute("username", username);
-					request.getRequestDispatcher("login.jsp").forward(request, response);
+					response.sendRedirect("login.jsp");
 				}
 
 			} catch (SQLException e) {

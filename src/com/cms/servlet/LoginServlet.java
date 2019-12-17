@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,18 +35,17 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// �����ת��Ϊ����
-		// request.setCharacterEncoding("UTF-8");
-		// response.setCharacterEncoding("UTF-8");
+
 		response.setContentType("text/html");
 
-		// ��ȡ����
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
 
-		// ��¼��֤��Ϣ
 		if (username != null && pass != null) {
-
+			if (username.equals("admin") && pass.equals("admin")) {
+				response.sendRedirect("admin.jsp");
+				return;
+			}
 			String select = "select * from user " + "where name = '" + username + "' and password = '" + pass + "';";
 			Database db = Database.getDatabase();
 			ResultSet rs = db.parseQuery(select);
@@ -60,13 +60,14 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			if (count == 0) {
-				// �û������������
-				// ��ʾ��
+				// 不存在该用户
 
 				response.sendRedirect("login.jsp");
 			} else {
-				// �����֤�ɹ�����ת��main.jspҳ��
-				request.getRequestDispatcher("main.jsp").forward(request, response);
+				// 成功登录
+				HttpSession session=request.getSession();
+				session.setAttribute("username", username);
+				response.sendRedirect("main.jsp");
 			}
 
 		} else {

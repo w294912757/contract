@@ -1,7 +1,12 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
+	pageEncoding="UTF-8"%>
+<%@ page import="com.mysql.jdbc.Driver"%>
+=======
     pageEncoding="UTF-8"%>
 <%@ page import="com.mysql.jdbc.Driver" %>   
+>>>>>>> master
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +14,8 @@
 <meta charset="UTF-8">
 <title>待会签合同</title>
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
+<<<<<<< HEAD
+=======
 <script type="text/javascript">
 function reLogin() {
 	var r = confirm("确认注销登录？")
@@ -19,6 +26,7 @@ function reLogin() {
 	}
 }
 	</script>
+>>>>>>> master
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
@@ -27,27 +35,57 @@ function reLogin() {
 		<div class="navigation">
 
 			<br> <a>合同起草</a><br> <a href=" draft.jsp">起草合同</a> <br>
-			<a href=" toconfirm.jsp">待定稿合同</a> <br> <a
-				href=" confirmed.jsp">已定稿合同</a> <br> <a
-				href=" query.jsp">流程查询</a> <br> <br> <a>合同会签</a><br>
+			<a href=" toconfirm.jsp">待定稿合同</a> <br> <a href=" confirmed.jsp">已定稿合同</a>
+			<br> <a href=" query.jsp">流程查询</a> <br> <br> <a>合同会签</a><br>
 			<a href=" tocontersign.jsp">待会签合同</a> <br> <a
 				href=" contersigned.jsp">已会签合同</a> <br> <br> <a>合同审批</a><br>
-			<a href=" toapprove.jsp">待审批合同</a> <br> <a
-				href=" approved.jsp">已审批合同</a> <br> <br> <a>合同签订</a><br>
-			<a href=" tosign.jsp">待签订合同</a> <br> <a
-				href=" signed.jsp">已签订合同</a>
+			<a href=" toapprove.jsp">待审批合同</a> <br> <a href=" approved.jsp">已审批合同</a>
+			<br> <br> <a>合同签订</a><br> <a href=" tosign.jsp">待签订合同</a>
+			<br> <a href=" signed.jsp">已签订合同</a>
 
 		</div>
 	</div>
 
 	<div class="mainbackground">
 		<div class="mainview">
+<<<<<<< HEAD
+			<form name="tocontersign" id="tocontersignform"
+				action="TocontersignServlet" method="get">
+				<h3>待会签合同</h3>
+=======
 <h3>待会签合同</h3>
+>>>>>>> master
 				查找待会签合同:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
 				<button style="height: 20px; width: 55px; text-align: center;"
 					id="searchbutton" type="button">search</button>
 				<br>
+<<<<<<< HEAD
+				<table class="table-normal" id="outBoxTab" data-pagination="true"
+					data-side-pagination="client" data-page-size="3">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>NAME</th>
+							<th>USER_ID</th>
+							<th>CUSTOMER</th>
+							<th>CONTENT</th>
+							<th>BeginTime</th>
+							<th>EndTime</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</form>
+			<button type="button" id="pre">首页</button>
+			<button type="button" id="up">上一页</button>
+			<input type="text" id="change" value="1">
+			<button type="button" id="skip">跳转</button>
+			<button type="button" id="down">下一页</button>
+			<button type="button" id="end">尾页</button>
+=======
 	<form name="tbform" id="tbform" action="TocontersignServlet" method="get">
     <table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
@@ -72,6 +110,7 @@ function reLogin() {
     <button type="button" id="end" >尾页</button>
     <input type="button" name="go" id="go" value="会签"  onclick="findButton()"/>
     </form>
+>>>>>>> master
 		</div>
 	</div>
 	<div class="photo"></div>
@@ -84,6 +123,57 @@ var nowPage = 0, //当前页
 var testDataList = []; //创建一个存放数据的数组
 var allName = new Array();
 var nameCount = 0;
+<<<<<<< HEAD
+<%try {
+				Class.forName("com.mysql.cj.jdbc.Driver"); ////加载数据库驱动
+				String url = "jdbc:mysql://localhost:3306/contractbase?useSSL=false&serverTimezone=UTC"; //指向数据库table1
+				String username = "root"; //数据库用户名
+				String password = "root"; //数据库用户密码
+				Connection conn = DriverManager.getConnection(url, username, password); //连接数据库
+				if (conn != null) {
+					Statement stmt = null;
+					ResultSet rs = null;
+					String sql = "select * from contract;"; //查询语句
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery(sql);
+					while (rs.next()) {
+						List<Object> list = new ArrayList<Object>();
+						list.add(rs.getString(1));
+						list.add(rs.getString(2));
+						list.add(rs.getString(3));
+						list.add(rs.getString(4));
+						list.add(rs.getString(5));
+						list.add(rs.getString(6));
+						list.add(rs.getString(7));%>
+			var data=new Array();
+			allName[nameCount]='<%=list.get(0)%>';
+			nameCount++;
+			<%if (list != null) {
+							for (int i = 0; i < list.size(); i++) {%>
+			    data[<%=i%>]='<%=list.get(i)%>';
+			  <%}
+						}%>
+			  num++;
+			testDataList.push(`<tr>
+					<td id="contractid" name="contractid">`+data[0]+`</td>
+					<td>`+data[1]+`</td>
+					<td>`+data[2]+`</td>
+					<td>`+data[3]+`</td>
+					<td>`+data[4]+`</td>
+					<td>`+data[5]+`</td>
+					<td>`+data[6]+`</td>
+	                <td>
+	                 <input type="submit" value="会签" > 
+	                </td>
+	                </tr>`);
+			<%}
+				} else {
+					out.print("连接失败！");
+				}
+			} catch (Exception e) {
+				out.print("数据库连接异常！");
+			}%>
+=======
 <%
 int j = 0;
 try {  
@@ -175,6 +265,7 @@ function findButton() {
 }
 
 
+>>>>>>> master
 
 pageAll = (testDataList.length) / count; //计算总页数
 var setPage = function () {
@@ -265,5 +356,16 @@ searchbutton.onclick = function(){
     outBoxTab.querySelector('tbody').innerHTML = onePageData.join('');
 }
 
+<<<<<<< HEAD
+	function reLogin() {
+		var r = confirm("确认注销登录？")
+		if (r == true) {
+			window.location.href = "login.jsp"
+		} else {
+
+		}
+	}
+=======
+>>>>>>> master
 </script>
 </html>
