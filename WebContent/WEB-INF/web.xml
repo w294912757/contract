@@ -26,7 +26,7 @@
 		<servlet-name>SignupServlet</servlet-name>
 		<url-pattern>/CMS/SignupServlet</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
+
 
 	<servlet>
 		<servlet-name>DraftServlet</servlet-name>
@@ -38,9 +38,7 @@
 		<url-pattern>/CMS/DraftServlet</url-pattern>
 	</servlet-mapping>
 
-=======
-	
->>>>>>> master
+r
 	<servlet>
 		<servlet-name>TocontersignServlet</servlet-name>
 		<servlet-class>com.cms.servlet.TocontersignServlet</servlet-class>
@@ -50,7 +48,7 @@
 		<servlet-name>TocontersignServlet</servlet-name>
 		<url-pattern>/CMS/TocontersignServlet</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
+
 
 	<servlet>
 		<servlet-name>Admininsertcontract</servlet-name>
@@ -71,7 +69,7 @@
 		<servlet-name>Admininsertcharacter</servlet-name>
 		<url-pattern>/CMS/Admininsertcharacter</url-pattern>
 	</servlet-mapping>
-=======
+
 	
 	<servlet>
 		<servlet-name>ApproveServlet</servlet-name>
@@ -103,5 +101,5 @@
 		<url-pattern>/CMS/SignServlet</url-pattern>
 	</servlet-mapping>
 	
->>>>>>> master
+
 </web-app>
