@@ -18,6 +18,26 @@
 
 		}
 	}
+
+	function Select(id1, id2) {
+		var myselect = document.getElementById(id1);
+		var index = myselect.selectedIndex;
+		var text = myselect.options[index].text;
+		var value = myselect.options[index].value;
+		var obj = document.getElementById(id2);
+		obj.add(new Option(text, value))
+		myselect.options.remove(index);
+	}
+
+	function Back(id1, id2) {
+		var myselect = document.getElementById(id2);
+		var index = myselect.selectedIndex;
+		var text = myselect.options[index].text;
+		var value = myselect.options[index].value;
+		var obj = document.getElementById(id1);
+		obj.add(new Option(text, value))
+		myselect.options.remove(index);
+	}
 </script>
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
 </head>
@@ -51,19 +71,19 @@
 					<p style="float: right;">已分配人员列表:</p>
 					<br> <br> <select id="confirmer" name="confirmer"
 						multiple size="6" style="float: left;">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
+						<option value="1">一</option>
+						<option value="2">二</option>
+						<option value="3">三</option>
+						<option value="4">四</option>
+						<option value="5">五</option>
 					</select> <select id="toconfirm" name="toconfirm" multiple size="6"
 						style="float: right;" form="distributorform">
 
 					</select>
 
-					<button onclick="confirmerSelect();">>></button>
+					<button onclick="Select('confirmer','toconfirm');" type="button">>></button>
 					<br>
-					<button onclick="confirmerBack();"><<</button>
+					<button onclick="Back('confirmer','toconfirm');" type="button"><<</button>
 
 
 
@@ -85,9 +105,9 @@
 
 					</select>
 
-					<button onclick="approveSelect();">>></button>
+					<button onclick="Select('approver','toapprove');" type="button">>></button>
 					<br>
-					<button onclick="approveBack();"><<</button>
+					<button onclick="Back('approver','toapprove');" type="button"><<</button>
 
 
 
@@ -109,9 +129,9 @@
 
 					</select>
 
-					<button onclick="signSelect();">>></button>
+					<button onclick="Select('signer','tosign');" type="button">>></button>
 					<br>
-					<button onclick="signBack();"><<</button>
+					<button onclick="Back('signer','tosign');" type="button"><<</button>
 
 
 
