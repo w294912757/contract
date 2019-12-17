@@ -55,13 +55,13 @@
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>USER_ID</th>
-                <th>CUSTOMER</th>
-                <th>CONTENT</th>
-                <th>BeginTime</th>
-                <th>EndTime</th>
+                <th>合同编号</th>
+                <th>合同名称</th>
+                <th>起草人</th>
+                <th>客户</th>
+                <th>合同内容</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
             </tr>
         </thead>
         <tbody> </tbody>
@@ -95,7 +95,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a where a.id=any(select b.id from contract_state b where b.type='4');";  //实际查询语句
+		String sql ="select * from contract a where a.id=any(select b.id from contract_state b where b.type=4);";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
@@ -116,9 +116,15 @@ try {
 			   {
 			    for(int i=0;i<list.size();i++)
 			    {
+			    	if(list.get(i)==null){
+			    		%>
+			    		data[<%=i%>]="";
+			    			<%
+			    	}else{
 			  %>
 			    data[<%=i%>]='<%=list.get(i)%>';
 			  <%   }
+			   }
 			   }
 			  %>
 				  num++;
