@@ -18,16 +18,16 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class ConfirmServlet
+ * Servlet implementation class AdminDistributionServlet
  */
-@WebServlet("/ConfirmServlet")
-public class ConfirmServlet extends HttpServlet {
+@WebServlet("/AdminDistributionServlet")
+public class AdminDistributionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ConfirmServlet() {
+	public AdminDistributionServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,21 +53,8 @@ public class ConfirmServlet extends HttpServlet {
             }   
 		}  
 		request.getSession().setAttribute("contractid", id);
-		//查询相关信息
-		ResultSet rs = Database.getDatabase().parseQuery("select * from contract a,contract_attachment b where a.id ="+id+" and a.id=b.con_id;");
-		try {
-			while(rs.next()) {
-				request.getSession().setAttribute("customerid", rs.getString("customer"));
-				request.getSession().setAttribute("begintime", rs.getDate("beginTime"));
-				request.getSession().setAttribute("endtime", rs.getDate("endTime"));
-				request.getSession().setAttribute("attachid", rs.getString("fileName"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		response.sendRedirect("confirm.jsp");
+		response.sendRedirect("admin_distributor.jsp");
 		
 		
 	}

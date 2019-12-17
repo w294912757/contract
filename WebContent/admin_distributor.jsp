@@ -42,6 +42,14 @@
 		myselect.options.remove(index);
 	}
 </script>
+<style type="text/css">
+.test{
+<%if(true){%>
+display:none;
+visibility:hidden;
+<%}%>
+}
+</style>
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
 </head>
 <body>
@@ -50,6 +58,7 @@
 	<div class="navigationbackground">
 		<div class="navigation">
 
+
 			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp"
 				class="test">合同信息查询</a> <br> <a href="admin_processquery.jsp">合同流程查询</a>
 			<br> <br> <a>基础数据管理</a><br> <a
@@ -57,6 +66,7 @@
 				href="admin_clientmanage.jsp">客户信息管理</a> <br> <br> <a>系统管理</a><br>
 			<a href="admin_distribution.jsp">分配合同</a> <br> <a
 				href="admin_authoritymanage.jsp">权限管理</a> <br> <a
+
 				href="admin_logmanage.jsp">日志管理</a> <br>
 
 		</div>

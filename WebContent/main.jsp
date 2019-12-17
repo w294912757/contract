@@ -39,7 +39,7 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<p>您是新用户，没有合同操作权限，等待管理员为您配置权限</p>
+			<p>欢迎</p>
 
 		</div>
 	</div>

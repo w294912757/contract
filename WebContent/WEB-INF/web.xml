@@ -100,6 +100,59 @@
 		<url-pattern>/CMS/SignServlet</url-pattern>
 	</servlet-mapping>
 
+	
+	<servlet>
+		<servlet-name>AdminConfirmServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminConfirmServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminConfirmServlet</servlet-name>
+		<url-pattern>/CMS/AdminConfirmServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminDistributionServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminDistributionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminDistributionServlet</servlet-name>
+		<url-pattern>/CMS/AdminDistributionServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminDelConServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminDelConServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminDelConServlet</servlet-name>
+		<url-pattern>/CMS/AdminDelConServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminDelCharServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminDelCharServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminDelCharServlet</servlet-name>
+		<url-pattern>/CMS/AdminDelCharServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminDelUserServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminDelUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminDelUserServlet</servlet-name>
+		<url-pattern>/CMS/AdminDelUserServlet</url-pattern>
+	</servlet-mapping>
+	
+
+
 
 	<servlet>
 		<servlet-name>Admininsertclient</servlet-name>
@@ -121,4 +174,5 @@
 		<servlet-name>Admininsertuser</servlet-name>
 		<url-pattern>/CMS/Admininsertuser</url-pattern>
 	</servlet-mapping>
+
 </web-app>
