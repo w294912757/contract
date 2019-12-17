@@ -61,8 +61,7 @@ public class LoginServlet extends HttpServlet {
 
 			if (count == 0) {
 				// 不存在该用户
-
-				response.sendRedirect("login.jsp");
+				response.getWriter().print("<script>alert('该用户不存在!');window.location.href='login.jsp'</script>");
 			} else {
 				// 成功登录
 				HttpSession session=request.getSession();
