@@ -9,6 +9,16 @@
 <meta charset="UTF-8">
 <title>待会签合同</title>
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
+<script type="text/javascript">
+function reLogin() {
+	var r = confirm("确认注销登录？")
+	if (r == true) {
+		window.location.href = "login.jsp"
+	} else {
+
+	}
+}
+	</script>
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
@@ -32,13 +42,13 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="tocontersign" id="tocontersignform" action="TocontersignServlet" method="get">
 <h3>待会签合同</h3>
 				查找待会签合同:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
 				<button style="height: 20px; width: 55px; text-align: center;"
 					id="searchbutton" type="button">search</button>
 				<br>
+	<form name="tbform" id="tbform" action="TocontersignServlet" method="get">
     <table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
@@ -50,18 +60,18 @@
                 <th>CONTENT</th>
                 <th>BeginTime</th>
                 <th>EndTime</th>
-                <th>操作</th>
             </tr>
         </thead>
         <tbody> </tbody>
     </table>
-    </form>
     <button type="button" id="pre" >首页</button>
     <button type="button" id="up" >上一页</button>
     <input type="text" id="change"  value="1">
     <button type="button" id="skip">跳转</button>
     <button type="button" id="down" >下一页</button>
     <button type="button" id="end" >尾页</button>
+    <input type="button" name="go" id="go" value="会签"  onclick="findButton()"/>
+    </form>
 		</div>
 	</div>
 	<div class="photo"></div>
@@ -74,16 +84,19 @@ var nowPage = 0, //当前页
 var testDataList = []; //创建一个存放数据的数组
 var allName = new Array();
 var nameCount = 0;
-<%try {  
+<%
+int j = 0;
+try {  
 	Class.forName("com.mysql.cj.jdbc.Driver");  ////加载数据库驱动
 	String url = "jdbc:mysql://localhost:3306/contract?useSSL=false&serverTimezone=UTC"; //指向数据库table1
 	String username = "root";  //数据库用户名
-	String password = "19990907";  //数据库用户密码
+	String password = "root";  //数据库用户密码
 	Connection conn = DriverManager.getConnection(url, username, password);  //连接数据库
 	if(conn != null){        
 		Statement stmt = null;  
 		ResultSet rs = null;  
-		String sql ="select * from contract;";  //查询语句
+		//String sql ="select * from contract;";  //查询语句
+		String sql ="select * from contract a where a.id=any(select b.id from contract_state b where b.type='1');";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
@@ -109,28 +122,59 @@ var nameCount = 0;
 			  <%   }
 			   }
 			  %>
-			  num++;
-			testDataList.push(`<tr>
-					<td id="contractid" name="contractid">`+data[0]+`</td>
-					<td>`+data[1]+`</td>
-					<td>`+data[2]+`</td>
-					<td>`+data[3]+`</td>
-					<td>`+data[4]+`</td>
-					<td>`+data[5]+`</td>
-					<td>`+data[6]+`</td>
-	                <td>
-	                 <input type="submit" value="会签" > 
-	                </td>
-	                </tr>`);
+				  num++;
+				testDataList.push('<tr>'+
+					'<td><input name="ctct" type="radio" value="'+data[0]+'">'+data[0]+'</td>'+
+					'<td>'+data[1]+'</td>'+
+					'<td>'+data[2]+'</td>'+
+					'<td>'+data[3]+'</td>'+
+					'<td>'+data[4]+'</td>'+
+					'<td>'+data[5]+'</td>'+
+					'<td>'+data[6]+'</td>'+
+	                '</tr>');
 			<%
+			j++;
 		}  			
+		conn.close();
 	}else{  
 			out.print("连接失败！");  
+			conn.close();
         }           
     }catch (Exception e) {        
             out.print("数据库连接异常！");  
     }
 %>
+function findButton() {
+	var myForm = document.getElementById("tbform");
+	var i;
+	var isFound = false;
+	if(!myForm.ctct[0]){
+		 if(myForm.ctct.checked) {
+			  isFound = true;
+		  }
+		 if(isFound ==false){
+				alert("请选择要会签的合同！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}else{
+		  for(i=0;i<myForm.ctct.length; i++) {
+			  if(myForm.ctct[i].checked) {
+				  isFound = true;
+			   break;
+			  }
+			}
+			if(isFound ==false){
+				alert("请选择要会签的合同！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}
+}
+
+
 
 pageAll = (testDataList.length) / count; //计算总页数
 var setPage = function () {
@@ -221,13 +265,5 @@ searchbutton.onclick = function(){
     outBoxTab.querySelector('tbody').innerHTML = onePageData.join('');
 }
 
-	function reLogin() {
-		var r = confirm("确认注销登录？")
-		if (r == true) {
-			window.location.href = "login.jsp"
-		} else {
-
-		}
-	}
 </script>
 </html>

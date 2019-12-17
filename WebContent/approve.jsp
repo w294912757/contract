@@ -44,7 +44,7 @@
 			<form name="approveform" id="approveform" method="get"
 				action="tosign.jsp">
 				<h3>审批合同</h3>
-				合同名称:<font> XXX</font> <br>
+				合同名称:<font id="contractid"> </font> <br>
 				<div style="width: 100%">
 					<div style="width: 20%; float: left; text-align: center;">
 						<input type="radio" id="yes" name="choise"> 通过 <br> <input
@@ -68,4 +68,8 @@
 	</div>
 	<div class="photo"></div>
 </body>
+<script>
+var status1 = '${sessionScope.contractid}';
+document.getElementById("contractid").innerHTML=status1;
+</script>
 </html>

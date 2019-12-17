@@ -43,7 +43,7 @@
 			<form name="contersignform" id="contersignform" method="get"
 				action="toconfirm.jsp">
 				<h3>会签合同</h3>
-				合同名称:<font> XXX</font> <br>会签意见:<br>
+				合同名称:<font id="contractid"></font> <br>会签意见:<br>
 				<textarea
 					style="overflow: scroll; overflow-x: hidden; height: 200px; width: 80%;"
 					form="contersignform" name="contersigncontent"
@@ -55,4 +55,8 @@
 		</div>
 	</div><div class="photo"></div>
 </body>
+<script>
+var status1 = '${sessionScope.contractid}';
+document.getElementById("contractid").innerHTML=status1;
+</script>
 </html>

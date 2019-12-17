@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class TocontersignServlet
+ * Servlet implementation class SignServlet
  */
-@WebServlet("/TocontersignServlet")
-public class TocontersignServlet extends HttpServlet {
+@WebServlet("/SignServlet")
+public class SignServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TocontersignServlet() {
+	public SignServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -50,9 +50,19 @@ public class TocontersignServlet extends HttpServlet {
             	id = values[i];
             }   
 		}  
-		request.getSession().setAttribute("contractid", id);
-		response.sendRedirect("contersign.jsp");
+		request.getSession().setAttribute("contractid", id.toString());
+		//查询相关信息
+		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ="+id+";");
+		try {
+			while(rs.next()) {
+				request.getSession().setAttribute("customerid", rs.getString("customer").toString());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		response.sendRedirect("sign.jsp");
 		
 	}
 
