@@ -96,18 +96,18 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a where a.id=any(select b.id from contract_state b where b.type=1);";  //实际查询语句
+		String sql ="select * from contract  where type = 1;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
 			List<Object> list = new ArrayList<Object>();
-			list.add(rs.getString(1));
-			list.add(rs.getString(2));
-			list.add(rs.getString(3));
-			list.add(rs.getString(4));
-			list.add(rs.getString(5));
-			list.add(rs.getString(6));
-			list.add(rs.getString(7));
+			list.add(rs.getString("id"));
+			list.add(rs.getString("name"));
+			list.add(rs.getString("uname"));
+			list.add(rs.getString("customer"));
+			list.add(rs.getString("content"));
+			list.add(rs.getString("beginTime"));
+			list.add(rs.getString("endTime"));
 			%>
 			var data=new Array();
 			allName[nameCount]='<%=list.get(0)%>';

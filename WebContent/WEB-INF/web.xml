@@ -186,6 +186,16 @@
 		<url-pattern>/CMS/AdminAuthorityServlet</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>AdminDistributorServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminDistributorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminDistributorServlet</servlet-name>
+		<url-pattern>/CMS/AdminDistributorServlet</url-pattern>
+	</servlet-mapping>
+	
 	
 
 </web-app>

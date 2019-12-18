@@ -3,6 +3,7 @@ package com.cms.servlet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,43 +39,65 @@ public class LoginServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 
-		String username = request.getParameter("username");
-		String pass = request.getParameter("pass");
-
-		if (username != null && pass != null) {
-			if (username.equals("admin") && pass.equals("admin")) {
-				response.sendRedirect("admin.jsp");
-				return;
+		String type = "";
+		String username = null;
+		String pass = null;
+		int count = 0;
+		Enumeration<String> en = request.getParameterNames();
+		while (en.hasMoreElements()) {
+			String paramName = (String) en.nextElement();
+			String[] values = request.getParameterValues(paramName);
+			switch (count) {
+			case 0: {
+				type = values[0];
+				break;
 			}
-			String select = "select * from user " + "where name = '" + username + "' and password = '" + pass + "';";
-			Database db = Database.getDatabase();
-			ResultSet rs = db.parseQuery(select);
-
-			int count = 0;
-			try {
-				while (rs.next()) {
-					count += 1;
-				}
-			} catch (SQLException ex) {
-				Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+			case 1: {
+				username = values[0];
+				break;
 			}
-
-			if (count == 0) {
-				// 不存在该用户
-				response.getWriter().print("<script>alert('该用户不存在!');window.location.href='login.jsp'</script>");
-			} else {
-				// 成功登录
-				HttpSession session=request.getSession();
-				session.setAttribute("username", username);
-				response.sendRedirect("main.jsp");
+			case 2: {
+				pass = values[0];
+				break;
 			}
-
-		} else {
-			response.sendRedirect("login.jsp");
+			}
+			count++;
 		}
-		// TODO Auto-generated method stub
+
+		if (username == null && pass == null) {
+			response.getWriter().println(1);
+			return;
+		}
+
+		String select = "select * from user where name = '" + username + "' and password = '" + pass + "';";
+		Database db = Database.getDatabase();
+		ResultSet rs = db.parseQuery(select);
+
+		count = 0;
+		try {
+			while (rs.next()) {
+				count += 1;
+			}
+		} catch (SQLException ex) {
+			response.getWriter().println(1);
+		}
+
+		if (count == 0) {
+			// 不存在该用户
+			response.getWriter().println(0);
+		} else {
+			// 成功登录
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			if (type.equals("user")) {
+				response.getWriter().println(2);
+			} else {
+				response.getWriter().println(3);
+			}
+		}
 
 	}
+	// TODO Auto-generated method stub
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

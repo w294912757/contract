@@ -96,16 +96,16 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract;";  //实际查询语句
+		String sql ="select * from contract where type = 0;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
 			List<Object> list = new ArrayList<Object>();
-			list.add(rs.getString(1));
-			list.add(rs.getString(2));
-			list.add(rs.getString(3));
-			list.add(rs.getString(5));
-			list.add(rs.getString(6));
+			list.add(rs.getString("id"));
+			list.add(rs.getString("name"));
+			list.add(rs.getString("uname"));
+			list.add(rs.getString("content"));
+			list.add(rs.getString("beginTime"));
 			%>
 			var data=new Array();
 			allName[nameCount]='<%=list.get(0)%>';

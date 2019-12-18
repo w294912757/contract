@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import java.util.Enumeration;
-
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,17 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mysql.cj.protocol.Resultset;
+
 /**
- * Servlet implementation class TocontersignServlet
+ * Servlet implementation class AdminDistributorServlet
  */
-@WebServlet("/TocontersignServlet")
-public class TocontersignServlet extends HttpServlet {
+@WebServlet("/AdminDistributorServlet")
+public class AdminDistributorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TocontersignServlet() {
+	public AdminDistributorServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -43,7 +43,10 @@ public class TocontersignServlet extends HttpServlet {
 		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
-
+		List<String> contersign = new ArrayList<String>();
+		List<String> sign = new ArrayList<String>();
+		List<String> approve = new ArrayList<String>();
+		int count = 0;
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
 		while (en.hasMoreElements()) {
@@ -51,21 +54,35 @@ public class TocontersignServlet extends HttpServlet {
 			String[] values = request.getParameterValues(paramName);
 			for (int i = 0; i < values.length; i++) {
 				id = values[i];
+				if (count == 0) {
+					contersign.add((String) id);
+				} else if (count == 1) {
+					sign.add((String) id);
+				} else if (count == 2) {
+					approve.add((String) id);
+				}
 			}
+			count++;
 		}
-		ResultSet rs = Database.getDatabase().parseQuery("select name from contract where id = '" + id + "';");
-		String name = "";
-		try {
-			while (rs.next()) {
-				name = rs.getString("name");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		String contractid = (String) session.getAttribute("contractid");
+
+		for (int i = 0; i < contersign.size(); i++) {
+			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+					+ contersign.get(i) + "'" + "," + 1 + ");");
 		}
-		request.getSession().setAttribute("tcid", id);
-		request.getSession().setAttribute("tcname", name);
-		response.sendRedirect("contersign.jsp");
+		for (int i = 0; i < sign.size(); i++) {
+			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+					+ sign.get(i) + "'" + "," + 3 + ");");
+		}
+		for (int i = 0; i < approve.size(); i++) {
+			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+					+ approve.get(i) + "'" + "," + 2 + ");");
+		}
+		
+		Database.getDatabase().parseUpdate("update contract set type = 1 where id = '"+contractid+"';");
+
+		response.getWriter().println(0);
 	}
 
 	/**
