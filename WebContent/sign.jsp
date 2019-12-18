@@ -40,7 +40,7 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="signform" id="signform" method="get" action="signed.jsp">
+			<form name="signform" id="signform" method="get" action="SignServlet">
 				<h3>签订合同</h3>
 				合同名称:<font id="contractid"> XXX</font> <br> 客户:<font id="customerid"> XXX</font> <br>签订信息:<br>
 				<textarea
@@ -55,9 +55,9 @@
 	</div><div class="photo"></div>
 </body>
 <script>
-var status1 = '${sessionScope.contractid}';
+var status1 = '${sessionScope.sname}';
 document.getElementById("contractid").innerHTML=status1;
-var status2 = '${sessionScope.customerid}';
+var status2 = '${sessionScope.scustomer}';
 document.getElementById("customerid").innerHTML=status2;
 </script>
 </html>

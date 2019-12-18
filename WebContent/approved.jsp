@@ -95,7 +95,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract where type=4);";  //实际查询语句
+		String sql ="select * from contract where type=4;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

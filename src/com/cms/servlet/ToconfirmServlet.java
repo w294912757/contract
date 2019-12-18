@@ -18,17 +18,16 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class AdminConfirmServlet/.4
- * ;''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''4l231
+ * Servlet implementation class ConfirmServlet
  */
-@WebServlet("/AdminConfirmServlet")
-public class AdminConfirmServlet extends HttpServlet {
+@WebServlet("/ToconfirmServlet")
+public class ToconfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdminConfirmServlet() {
+	public ToconfirmServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,15 +40,36 @@ public class AdminConfirmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		HttpSession session = request.getSession();
-		String acid = (String) session.getAttribute("acid");
-		String update = "update contract set type = 3 where id = '" + acid + "';";
+		// 将输出转换为中文
+		// request.setCharacterEncoding("UTF-8");
+		// response.setCharacterEncoding("UTF-8");
+		String id = "";
+		Enumeration<String> en = request.getParameterNames();
+		while (en.hasMoreElements()) {
+			String paramName = (String) en.nextElement();
+			String[] values = request.getParameterValues(paramName);
+			for (int i = 0; i < values.length; i++) {
+				id = values[i];
+			}
+		}
 
-		Database.getDatabase().parseUpdate(update);
-		response.sendRedirect("admin_processquery.jsp");
+		// 查询相关信息
+		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ='" + id + "';");
+		try {
+			while (rs.next()) {
+				request.getSession().setAttribute("cid", id);
+				request.getSession().setAttribute("cname", rs.getString("name"));
+				request.getSession().setAttribute("ccustomer", rs.getString("customer"));
+				request.getSession().setAttribute("cbegintime", rs.getDate("beginTime"));
+				request.getSession().setAttribute("cendtime", rs.getDate("endTime"));
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		response.sendRedirect("confirm.jsp");
 
 	}
 

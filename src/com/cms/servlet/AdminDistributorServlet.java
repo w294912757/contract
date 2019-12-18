@@ -46,6 +46,7 @@ public class AdminDistributorServlet extends HttpServlet {
 		List<String> contersign = new ArrayList<String>();
 		List<String> sign = new ArrayList<String>();
 		List<String> approve = new ArrayList<String>();
+		List<String> confirm = new ArrayList<String>();
 		int count = 0;
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
@@ -55,10 +56,12 @@ public class AdminDistributorServlet extends HttpServlet {
 			for (int i = 0; i < values.length; i++) {
 				id = values[i];
 				if (count == 0) {
-					contersign.add((String) id);
+					confirm.add((String) id);
 				} else if (count == 1) {
-					sign.add((String) id);
+					contersign.add((String) id);
 				} else if (count == 2) {
+					sign.add((String) id);
+				} else if (count == 3) {
 					approve.add((String) id);
 				}
 			}
@@ -66,21 +69,24 @@ public class AdminDistributorServlet extends HttpServlet {
 		}
 		HttpSession session = request.getSession();
 		String contractid = (String) session.getAttribute("contractid");
-
+		for (int i = 0; i < confirm.size(); i++) {
+			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+					+ confirm.get(i) + "'" + "," + 2+ ");");
+		}
 		for (int i = 0; i < contersign.size(); i++) {
 			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
 					+ contersign.get(i) + "'" + "," + 1 + ");");
 		}
 		for (int i = 0; i < sign.size(); i++) {
 			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
-					+ sign.get(i) + "'" + "," + 3 + ");");
+					+ sign.get(i) + "'" + "," + 4 + ");");
 		}
 		for (int i = 0; i < approve.size(); i++) {
 			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
-					+ approve.get(i) + "'" + "," + 2 + ");");
+					+ approve.get(i) + "'" + "," + 3 + ");");
 		}
-		
-		Database.getDatabase().parseUpdate("update contract set type = 1 where id = '"+contractid+"';");
+
+		Database.getDatabase().parseUpdate("update contract set type = 1 where id = '" + contractid + "';");
 
 		response.getWriter().println(0);
 	}

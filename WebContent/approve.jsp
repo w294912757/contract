@@ -42,7 +42,7 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<form name="approveform" id="approveform" method="get"
-				action="tosign.jsp">
+				action="ApproveServlet">
 				<h3>审批合同</h3>
 				合同名称:<font id="contractid"> </font> <br>
 				<div style="width: 100%">
@@ -69,7 +69,7 @@
 	<div class="photo"></div>
 </body>
 <script>
-var status1 = '${sessionScope.contractid}';
+var status1 = '${sessionScope.aname}';
 document.getElementById("contractid").innerHTML=status1;
 </script>
 </html>
