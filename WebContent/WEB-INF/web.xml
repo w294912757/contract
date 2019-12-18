@@ -100,7 +100,7 @@
 		<url-pattern>/CMS/SignServlet</url-pattern>
 	</servlet-mapping>
 
-	
+
 	<servlet>
 		<servlet-name>AdminConfirmServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminConfirmServlet</servlet-class>
@@ -110,7 +110,7 @@
 		<servlet-name>AdminConfirmServlet</servlet-name>
 		<url-pattern>/CMS/AdminConfirmServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminDistributionServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminDistributionServlet</servlet-class>
@@ -120,7 +120,7 @@
 		<servlet-name>AdminDistributionServlet</servlet-name>
 		<url-pattern>/CMS/AdminDistributionServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminDelConServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminDelConServlet</servlet-class>
@@ -130,7 +130,7 @@
 		<servlet-name>AdminDelConServlet</servlet-name>
 		<url-pattern>/CMS/AdminDelConServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminDelCharServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminDelCharServlet</servlet-class>
@@ -140,7 +140,7 @@
 		<servlet-name>AdminDelCharServlet</servlet-name>
 		<url-pattern>/CMS/AdminDelCharServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminDelUserServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminDelUserServlet</servlet-class>
@@ -150,8 +150,6 @@
 		<servlet-name>AdminDelUserServlet</servlet-name>
 		<url-pattern>/CMS/AdminDelUserServlet</url-pattern>
 	</servlet-mapping>
-	
-
 
 
 	<servlet>
@@ -175,7 +173,7 @@
 		<url-pattern>/CMS/Admininsertuser</url-pattern>
 	</servlet-mapping>
 
-	
+
 	<servlet>
 		<servlet-name>AdminAuthorityServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminAuthorityServlet</servlet-class>
@@ -185,7 +183,7 @@
 		<servlet-name>AdminAuthorityServlet</servlet-name>
 		<url-pattern>/CMS/AdminAuthorityServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>AdminDistributorServlet</servlet-name>
 		<servlet-class>com.cms.servlet.AdminDistributorServlet</servlet-class>
@@ -195,7 +193,14 @@
 		<servlet-name>AdminDistributorServlet</servlet-name>
 		<url-pattern>/CMS/AdminDistributorServlet</url-pattern>
 	</servlet-mapping>
-	
-	
 
+	<servlet>
+		<servlet-name>ContersignServlet</servlet-name>
+		<servlet-class>com.cms.servlet.ContersignServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ContersignServlet</servlet-name>
+		<url-pattern>/CMS/ContersignServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
