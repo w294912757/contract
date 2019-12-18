@@ -53,7 +53,7 @@
 					id="searchbutton" onclick="Search()" type="button">search</button>
 				<br>
 
-				<form name="tbform" id="tbform" action="SignServlet" method="get">
+				<form name="tbform" id="tbform" action="TosignServlet" method="get">
     <table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
@@ -101,7 +101,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract where type=4);";  //实际查询语句
+		String sql ="select * from contract where type=4;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

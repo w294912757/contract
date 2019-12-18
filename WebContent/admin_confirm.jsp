@@ -37,7 +37,7 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<form name="confirmform" id="confirmform" method="get"
-				action="toapprove.jsp">
+				action="AdminConfirmServlet">
 				<h3>定稿合同</h3>
 				合同名称:<font id="contractid"> </font> <br>客户:<font id="customerid"> </font><br>开始时间:<font id="begintime">
 					</font> <br>结束时间:<font id="endtime"> </font> <br> 合同内容:<br>
@@ -54,15 +54,14 @@
 	<div class="photo"></div>
 </body>
 <script>
-var status1 = '${sessionScope.contractid}';
-document.getElementById("contractid").innerHTML=status1;
-var status2 = '${sessionScope.customerid}';
-document.getElementById("customerid").innerHTML=status2;
-var status3 = '${sessionScope.begintime}';
-document.getElementById("begintime").innerHTML=status3;
-var status4 = '${sessionScope.endtime}';
-document.getElementById("endtime").innerHTML=status4;
-var status5 = '${sessionScope.attachid}';
-document.getElementById("attachid").innerHTML=status5;
+var status1 = '${sessionScope.acname}';
+document.getElementById("contractid").innerHTML = status1;
+var status2 = '${sessionScope.accustomer}';
+document.getElementById("customerid").innerHTML = status2;
+var status3 = '${sessionScope.acbegintime}';
+document.getElementById("begintime").innerHTML = status3;
+var status4 = '${sessionScope.acendtime}';
+document.getElementById("endtime").innerHTML = status4;
+
 </script>
 </html>

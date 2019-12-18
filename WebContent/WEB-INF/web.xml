@@ -71,13 +71,13 @@
 
 
 	<servlet>
-		<servlet-name>ApproveServlet</servlet-name>
-		<servlet-class>com.cms.servlet.ApproveServlet</servlet-class>
+		<servlet-name>ToapproveServlet</servlet-name>
+		<servlet-class>com.cms.servlet.ToapproveServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>ApproveServlet</servlet-name>
-		<url-pattern>/CMS/ApproveServlet</url-pattern>
+		<servlet-name>ToapproveServlet</servlet-name>
+		<url-pattern>/CMS/ToapproveServlet</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -91,13 +91,13 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>SignServlet</servlet-name>
-		<servlet-class>com.cms.servlet.SignServlet</servlet-class>
+		<servlet-name>TosignServlet</servlet-name>
+		<servlet-class>com.cms.servlet.TosignServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SignServlet</servlet-name>
-		<url-pattern>/CMS/SignServlet</url-pattern>
+		<servlet-name>TosignServlet</servlet-name>
+		<url-pattern>/CMS/TosignServlett</url-pattern>
 	</servlet-mapping>
 
 
@@ -202,5 +202,50 @@
 	<servlet-mapping>
 		<servlet-name>ContersignServlet</servlet-name>
 		<url-pattern>/CMS/ContersignServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ToconfirmServlet</servlet-name>
+		<servlet-class>com.cms.servlet.ToconfirmServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ToconfirmServlet</servlet-name>
+		<url-pattern>/CMS/ToconfirmServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>ApproveServlet</servlet-name>
+		<servlet-class>com.cms.servlet.ApproveServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ApproveServlet</servlet-name>
+		<url-pattern>/CMS/ApproveServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+		<servlet>
+		<servlet-name>SignServlet</servlet-name>
+		<servlet-class>com.cms.servlet.SignServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SignServlet</servlet-name>
+		<url-pattern>/CMS/SignServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>AdminAlterServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminAlterServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminAlterServlet</servlet-name>
+		<url-pattern>/CMS/AdminAlterServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

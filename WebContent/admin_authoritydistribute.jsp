@@ -54,7 +54,7 @@
             <tr>
                 <th>用户名</th>
                 <th>角色名称</th>
-                <th>角色描述</th>
+
             </tr>
         </thead>
         <tbody> </tbody>
@@ -108,7 +108,6 @@ var init = function(){
 				List<Object> list = new ArrayList<Object>();
 				list.add(rs.getString("uname"));
 				list.add(rs.getString("rname"));
-				list.add(rs.getString("description"));
 				%>
 				var data=new Array();
 				allName[count]='<%=list.get(0)%>';
@@ -136,8 +135,7 @@ var init = function(){
 						<%for(int m =0;m<comboL.size();m++){%>
 						'<option value="0">'+'<%=comboL.get(m)%>'+'</option>'+
 						<%}%>
-						'</select></td><td>'+data[2]+'</td>'+
-		                '</tr>');
+						'</select></td></tr>');
 				<%
 				j++;
 			}  			

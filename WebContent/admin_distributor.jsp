@@ -75,9 +75,10 @@
 			<h3>流程配置</h3>
 			<form name="distributorform" id="distributorform" method="get"
 				action="">
+
 				<div
 					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
-					分配会签人:
+					分配定稿人:
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
 					<br> <br> <select id="confirmer" name="confirmer"
@@ -90,6 +91,28 @@
 					<button onclick="Select('confirmer','toconfirm');" type="button">>></button>
 					<br>
 					<button onclick="Back('confirmer','toconfirm');" type="button"><<</button>
+
+
+
+				</div>
+
+				<div
+					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
+					分配会签人:
+					<p style="float: left;">待分配人员列表:</p>
+					<p style="float: right;">已分配人员列表:</p>
+					<br> <br> <select id="contersigner" name="contersigner"
+						multiple size="5" style="float: left;">
+					</select> <select id="tocontersign" name="tocontersign" multiple size="5"
+						style="float: right;" form="distributorform">
+
+					</select>
+
+					<button onclick="Select('contersigner','tocontersign');"
+						type="button">>></button>
+					<br>
+					<button onclick="Back('contersigner','tocontersign');"
+						type="button"><<</button>
 
 
 
@@ -134,6 +157,7 @@
 
 
 				</div>
+
 				<br> <input type="button" value="提交" style="margin-left: 40px"
 					onclick="test()"> <input type="button" value="重置"
 					onclick="window.location.href='admin_distributor.jsp'">
@@ -146,6 +170,7 @@
 var testDataList = []; 
 var testDataList2 = []; 
 var testDataList3 = []; 
+var testDataList4 = []; 
 var data = [];
 var init = function(){
 	<%int j = 0;
@@ -217,6 +242,25 @@ var init = function(){
 				+ '</option>');
 <%}
 
+					String sql3 = "select uname from privilege a,role b where a.rname=b.NAME and b.contract_confirm=1 order by uname; "; //实际查询语句
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery(sql3);
+					while (rs.next()) {
+						List<Object> list = new ArrayList<Object>();
+						list.add(rs.getString(1));%>
+				<%if (list != null) {
+							for (int i = 0; i < list.size(); i++) {
+								if (list.get(i) == null) {%>
+				    		data[<%=i%>]="";
+				    			<%} else {%>
+				    data[<%=i%>]='<%=list.get(i)%>';
+<%}
+							}
+						}%>
+	testDataList4.push('<option value="'+data[0]+'">' + data[0]
+				+ '</option>');
+<%}
+
 					conn.close();
 				} else {
 					out.print("连接失败！");
@@ -229,9 +273,11 @@ var init = function(){
 	init();
 
 	var setSelect = function() { //数据渲染表格
-		document.getElementById('confirmer').innerHTML = testDataList.join('');
+		document.getElementById('contersigner').innerHTML = testDataList
+				.join('');
 		document.getElementById('approver').innerHTML = testDataList2.join('');
 		document.getElementById('signer').innerHTML = testDataList3.join('');
+		document.getElementById('confirmer').innerHTML = testDataList4.join('');
 	}
 	setSelect();
 
@@ -239,14 +285,17 @@ var init = function(){
 		var tocontersign = new Array();
 		var tosign = new Array();
 		var toapprove = new Array();
+		var toconfirm = new Array();
 
-		var obj1 = document.getElementById("toconfirm");
+		var obj1 = document.getElementById("tocontersign");
 		var obj2 = document.getElementById("tosign");
 		var obj3 = document.getElementById("toapprove");
+		var obj4 = document.getElementById("toconfirm");
 
 		var len1 = obj1.length;
 		var len2 = obj2.length;
 		var len3 = obj3.length;
+		var len4 = obj4.length;
 
 		for (var i = 0; i < len1; i++) {
 			var text = obj1.options[i].text;
@@ -260,12 +309,17 @@ var init = function(){
 			var text = obj3.options[i].text;
 			toapprove.push(text);
 		}
+		for (var i = 0; i < len4; i++) {
+			var text = obj4.options[i].text;
+			toapprove.push(text);
+		}
 
 		$.ajax({
 			type : "GET", //请求方式  
 			url : "AdminDistributorServlet", //请求路径  
 			cache : false,
 			data : {//传参  
+				"toconfirm" : toconfirm,
 				"tocontersign" : tocontersign,
 				"tosign" : tosign,
 				"toapprove" : toapprove,

@@ -18,17 +18,17 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class AdminConfirmServlet/.4
+ * Servlet implementation class AdminConfirmServlet/.4 
  * ;''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''4l231
  */
-@WebServlet("/AdminConfirmServlet")
-public class AdminConfirmServlet extends HttpServlet {
+@WebServlet("/AdminAlterServlet")
+public class AdminAlterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdminConfirmServlet() {
+	public AdminAlterServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,16 +41,38 @@ public class AdminConfirmServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
-		HttpSession session = request.getSession();
-		String acid = (String) session.getAttribute("acid");
-		String update = "update contract set type = 3 where id = '" + acid + "';";
+		// 将输出转换为中文
+		// request.setCharacterEncoding("UTF-8");
+		// response.setCharacterEncoding("UTF-8");
+		String id = "";
+		Enumeration<String> en = request.getParameterNames();
+		while(en.hasMoreElements()){    
+            String  paramName=(String)en.nextElement();                        
+            String[]  values=request.getParameterValues(paramName);    
+            for(int  i=0;i<values.length;i++){ 
+            	id = values[i];
+            }   
+		}  
 
-		Database.getDatabase().parseUpdate(update);
-		response.sendRedirect("admin_processquery.jsp");
+		//查询相关信息
+		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ='" + id + "';");
+		try {
+			while (rs.next()) {
+				request.getSession().setAttribute("acid", id);
+				request.getSession().setAttribute("acname", rs.getString("name"));
+				request.getSession().setAttribute("accustomer", rs.getString("customer"));
+				request.getSession().setAttribute("acbegintime", rs.getDate("beginTime"));
+				request.getSession().setAttribute("acendtime", rs.getDate("endTime"));
 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("admin_confirm.jsp");
+		
+		
 	}
 
 	/**
