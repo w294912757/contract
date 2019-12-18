@@ -43,77 +43,12 @@ public class ContersignServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
-		String username = (String) session.getAttribute("username");
-		String contractname = request.getParameter("contractname");
-		String begintime = request.getParameter("begintime");
-		String endtime = request.getParameter("endtime");
-		String client = request.getParameter("client");
-		String draftcontent = request.getParameter("draftcontent");
-		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+		String tcid = (String) session.getAttribute("tcid");
+		String update = "update contract set type = 2 where id = '" + tcid + "';";
 
-		if (contractname.equals("")) {
-			response.getWriter().print("<script>alert('用户名不能为空!');window.location.href='draft.jsp'</script>");
+		Database.getDatabase().parseUpdate(update);
+		response.sendRedirect("contersigned.jsp");
 
-		} else if (begintime.equals("")) {
-			response.getWriter().print("<script>alert('开始时间不能为空!');window.location.href='draft.jsp'</script>");
-
-		} else if (endtime.equals("")) {
-			response.getWriter().print("<script>alert('结束时间不能为空!');window.location.href='draft.jsp'</script>");
-
-		} else if (draftcontent.equals("")) {
-			response.getWriter().print("<script>alert('合同内容不能为空!');window.location.href='draft.jsp'</script>");
-//			request.getSession().setAttribute("contentFail", "yes");
-//			request.getRequestDispatcher("draft.jsp").forward(request, response);
-
-		} else {
-			try {
-				Date date = formatter.parse(begintime);
-
-			} catch (Exception e) {
-				response.getWriter().print("<script>alert('开始时间格式错误!');window.location.href='draft.jsp'</script>");
-			}
-			try {
-				Date date = formatter.parse(endtime);
-
-			} catch (Exception e) {
-				response.getWriter().print("<script>alert('结束时间格式错误!');window.location.href='draft.jsp'</script>");
-			}
-
-			try {
-				String select = "select * from contract;";
-				ResultSet rs = Database.getDatabase().parseQuery(select);
-				List<String> contractList = new ArrayList<String>();
-
-				while (rs.next()) {
-					contractList.add(rs.getString(1));
-				}
-				if (contractList.size() == 0) {
-					String insert = "insert into contract values(" + 1 + "," + "'" + contractname + "'" + "," + 0 + ","
-							+ "'" + username + "'" + "," + "'" + client + "'" + "," + "'" + draftcontent + "'" + ","
-							+ "'" + begintime + "'" + "," + "'" + endtime + "');";
-
-					Database.getDatabase().parseUpdate(insert);
-				} else {
-					String contractid = contractList.get(contractList.size() - 1);
-					int id = Integer.parseInt(contractid) + 1;
-					String insert = "insert into contract values(" + id + "," + "'" + contractname + "'" + "," + 0 + ","
-							+ "'" + username + "'" + "," + "'" + client + "'" + "," + "'" + draftcontent + "'" + ","
-							+ "'" + begintime + "'" + "," + "'" + endtime + "');";
-
-					Database.getDatabase().parseUpdate(insert);
-				}
-
-				// 符合注册条件，插入数据库
-
-				// 把用户消息放进session中
-				response.getWriter().print("<script>alert('结束时间格式错误!');window.location.href='draft.jsp'</script>");
-				response.sendRedirect("contersigned.jsp");
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		}
 	}
 
 	/**
