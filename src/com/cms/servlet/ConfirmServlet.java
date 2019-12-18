@@ -52,15 +52,17 @@ public class ConfirmServlet extends HttpServlet {
             	id = values[i];
             }   
 		}  
-		request.getSession().setAttribute("contractid", id);
+		
 		//查询相关信息
-		ResultSet rs = Database.getDatabase().parseQuery("select * from contract a,contract_attachment b where a.id ="+id+" and a.id=b.con_id;");
+		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ='"+id+"';");
 		try {
 			while(rs.next()) {
-				request.getSession().setAttribute("customerid", rs.getString("customer"));
-				request.getSession().setAttribute("begintime", rs.getDate("beginTime"));
-				request.getSession().setAttribute("endtime", rs.getDate("endTime"));
-				request.getSession().setAttribute("attachid", rs.getString("fileName"));
+				request.getSession().setAttribute("cid", id);
+				request.getSession().setAttribute("cname", rs.getString("name"));
+				request.getSession().setAttribute("ccustomer", rs.getString("customer"));
+				request.getSession().setAttribute("cbegintime", rs.getDate("beginTime"));
+				request.getSession().setAttribute("cendtime", rs.getDate("endTime"));
+				request.getSession().setAttribute("cattachid", rs.getString("fileName"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
