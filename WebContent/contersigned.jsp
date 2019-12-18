@@ -93,7 +93,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a where a.id=any(select b.id from contract_state b where b.type=2);";  //实际查询语句
+		String sql ="select * from contract where type=2);";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

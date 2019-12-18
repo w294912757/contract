@@ -18,16 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ContersignServlet
  */
-@WebServlet("/DraftServlet")
-public class DraftServlet extends HttpServlet {
+@WebServlet("/ContersignServlet")
+public class ContersignServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DraftServlet() {
+	public ContersignServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -107,7 +107,7 @@ public class DraftServlet extends HttpServlet {
 
 				// 把用户消息放进session中
 				response.getWriter().print("<script>alert('结束时间格式错误!');window.location.href='draft.jsp'</script>");
-				response.sendRedirect("tocontersign.jsp");
+				response.sendRedirect("contersigned.jsp");
 
 			} catch (SQLException e) {
 				e.printStackTrace();

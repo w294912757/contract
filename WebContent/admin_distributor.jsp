@@ -12,6 +12,7 @@
 .test { <%if (true) {%> display:none; <%}%>
 }
 </style>
+<script src="JS/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -133,8 +134,8 @@
 
 
 				</div>
-				<br> <input type="submit" value="提交" style="margin-left: 40px">
-				<input type="button" value="重置"
+				<br> <input type="button" value="提交" style="margin-left: 40px"
+					onclick="test()"> <input type="button" value="重置"
 					onclick="window.location.href='admin_distributor.jsp'">
 			</form>
 		</div>
@@ -150,7 +151,7 @@ var init = function(){
 	<%int j = 0;
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver"); ////加载数据库驱动
-				String url = "jdbc:mysql://localhost:3306/contractbase?useSSL=false&serverTimezone=UTC"; //指向数据库table1
+				String url = "jdbc:mysql://localhost:3306/contract?useSSL=false&serverTimezone=UTC"; //指向数据库table1
 				String username = "root"; //数据库用户名
 				String password = "root"; //数据库用户密码
 				Connection conn = DriverManager.getConnection(url, username, password); //连接数据库
@@ -176,7 +177,7 @@ var init = function(){
 	testDataList.push('<option value="'+data[0]+'">' + data[0]
 				+ '</option>');
 <%}
-					
+
 					String sql1 = "select uname from privilege a,role b where a.rname=b.NAME and b.process_approve=1 order by uname; "; //实际查询语句
 					stmt = conn.createStatement();
 					rs = stmt.executeQuery(sql1);
@@ -196,8 +197,7 @@ var init = function(){
 	testDataList2.push('<option value="'+data[0]+'">' + data[0]
 				+ '</option>');
 <%}
-					
-					
+
 					String sql2 = "select uname from privilege a,role b where a.rname=b.NAME and b.process_sign=1 order by uname; "; //实际查询语句
 					stmt = conn.createStatement();
 					rs = stmt.executeQuery(sql2);
@@ -210,14 +210,13 @@ var init = function(){
 				    		data[<%=i%>]="";
 				    			<%} else {%>
 				    data[<%=i%>]='<%=list.get(i)%>';
-	
 <%}
 							}
 						}%>
 	testDataList3.push('<option value="'+data[0]+'">' + data[0]
 				+ '</option>');
 <%}
-					
+
 					conn.close();
 				} else {
 					out.print("连接失败！");
@@ -235,5 +234,49 @@ var init = function(){
 		document.getElementById('signer').innerHTML = testDataList3.join('');
 	}
 	setSelect();
+
+	function test() {
+		var tocontersign = new Array();
+		var tosign = new Array();
+		var toapprove = new Array();
+
+		var obj1 = document.getElementById("toconfirm");
+		var obj2 = document.getElementById("tosign");
+		var obj3 = document.getElementById("toapprove");
+
+		var len1 = obj1.length;
+		var len2 = obj2.length;
+		var len3 = obj3.length;
+
+		for (var i = 0; i < len1; i++) {
+			var text = obj1.options[i].text;
+			tocontersign.push(text);
+		}
+		for (var i = 0; i < len2; i++) {
+			var text = obj2.options[i].text;
+			tosign.push(text);
+		}
+		for (var i = 0; i < len3; i++) {
+			var text = obj3.options[i].text;
+			toapprove.push(text);
+		}
+
+		$.ajax({
+			type : "GET", //请求方式  
+			url : "AdminDistributorServlet", //请求路径  
+			cache : false,
+			data : {//传参  
+				"tocontersign" : tocontersign,
+				"tosign" : tosign,
+				"toapprove" : toapprove,
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					window.location.href = 'admin_distribution.jsp';
+				}
+			}
+		});
+	}
 </script>
 </html>

@@ -84,7 +84,7 @@ var init = function(){
 	List<Object> comboL = new ArrayList<Object>();
 	try {  
 		Class.forName("com.mysql.cj.jdbc.Driver");  ////加载数据库驱动
-		String url = "jdbc:mysql://localhost:3306/contractbase?useSSL=false&serverTimezone=UTC"; //指向数据库table1
+		String url = "jdbc:mysql://localhost:3306/contract?useSSL=false&serverTimezone=UTC"; //指向数据库table1
 		String username = "root";  //数据库用户名
 		String password = "root";  //数据库用户密码
 		Connection conn = DriverManager.getConnection(url, username, password);  //连接数据库
