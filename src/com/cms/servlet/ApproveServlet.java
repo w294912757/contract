@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.crypto.provider.RSACipher;
+
 /**
  * Servlet implementation class ApproveServlet
  */
@@ -50,7 +52,18 @@ public class ApproveServlet extends HttpServlet {
             	id = values[i];
             }   
 		}  
-		request.getSession().setAttribute("contractid", id);
+		
+		ResultSet rs = Database.getDatabase().parseQuery("select name from contract where id = '" + id + "';");
+		try {
+			while (rs.next()) {
+				request.getSession().setAttribute("aid", id);
+				request.getSession().setAttribute("aname", rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		response.sendRedirect("approve.jsp");
 		
 		
