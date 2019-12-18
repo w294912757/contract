@@ -18,17 +18,16 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class AdminDistributionServlet/.4 
- * ;''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''4l231
+ * Servlet implementation class AdminAuthorityServlet
  */
-@WebServlet("/AdminDistributionServlet")
-public class AdminDistributionServlet extends HttpServlet {
+@WebServlet("/AdminAuthorityServlet")
+public class AdminAuthorityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AdminDistributionServlet() {
+	public AdminAuthorityServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -44,6 +43,10 @@ public class AdminDistributionServlet extends HttpServlet {
 		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
+		List<String> nameList = new ArrayList<String>();
+		List<String> roleList = new ArrayList<String>();
+		System.out.println("into doPost");
+        int count  =0;
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
 		while(en.hasMoreElements()){    
@@ -51,12 +54,20 @@ public class AdminDistributionServlet extends HttpServlet {
             String[]  values=request.getParameterValues(paramName);    
             for(int  i=0;i<values.length;i++){ 
             	id = values[i];
+            	if(count == 0) {
+    				nameList.add((String)id);
+    			}else if(count == 1){
+    				roleList.add((String)id);
+    			}
             }   
+            count++;
 		}  
-		request.getSession().setAttribute("contractid", id);
 		
+		for(int i = 0;i < nameList.size();i++) {
+			Database.getDatabase().parseUpdate("update privilege set rname = '"+roleList.get(i)+"' where uname = '"+nameList.get(i)+"';");
+		}
 		
-		response.sendRedirect("admin_distributor.jsp");
+		response.sendRedirect("admin_authoritydistribute.jsp");
 	}
 
 	/**

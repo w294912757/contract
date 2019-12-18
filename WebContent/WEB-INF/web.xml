@@ -175,4 +175,17 @@
 		<url-pattern>/CMS/Admininsertuser</url-pattern>
 	</servlet-mapping>
 
+	
+	<servlet>
+		<servlet-name>AdminAuthorityServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminAuthorityServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminAuthorityServlet</servlet-name>
+		<url-pattern>/CMS/AdminAuthorityServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+
 </web-app>
