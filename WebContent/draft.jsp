@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,6 +14,7 @@
 
 		}
 	}
+
 </script>
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
 </head>
@@ -23,16 +24,14 @@
 	<div class="navigationbackground">
 		<div class="navigation">
 
-			<br> <a>合同起草</a><br> <a href=" draft.jsp">起草合同</a>
-			<br> <a href=" toconfirm.jsp">待定稿合同</a> <br> <a
-				href=" confirmed.jsp">已定稿合同</a> <br> <a
-				href=" query.jsp">流程查询</a> <br> <br> <a>合同会签</a><br>
+			<br> <a>合同起草</a><br> <a href=" draft.jsp">起草合同</a> <br>
+			<a href=" toconfirm.jsp">待定稿合同</a> <br> <a href=" confirmed.jsp">已定稿合同</a>
+			<br> <a href=" query.jsp">流程查询</a> <br> <br> <a>合同会签</a><br>
 			<a href=" tocontersign.jsp">待会签合同</a> <br> <a
 				href=" contersigned.jsp">已会签合同</a> <br> <br> <a>合同审批</a><br>
-			<a href=" toapprove.jsp">待审批合同</a> <br> <a
-				href=" approved.jsp">已审批合同</a> <br> <br> <a>合同签订</a><br>
-			<a href=" tosign.jsp">待签订合同</a> <br> <a
-				href=" signed.jsp">已签订合同</a>
+			<a href=" toapprove.jsp">待审批合同</a> <br> <a href=" approved.jsp">已审批合同</a>
+			<br> <br> <a>合同签订</a><br> <a href=" tosign.jsp">待签订合同</a>
+			<br> <a href=" signed.jsp">已签订合同</a>
 
 		</div>
 	</div>
@@ -40,7 +39,7 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<form name="draftform" id="draftform" method="get"
-				action="tocontersign.jsp">
+				action="DraftServlet">
 				<h3>起草合同</h3>
 				合同名称:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 10px; width: 150px;"> <font
@@ -65,6 +64,7 @@
 		</div>
 
 
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
 </html>

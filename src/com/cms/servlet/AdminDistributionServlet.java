@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.protocol.Resultset;
 
 /**
- * Servlet implementation class AdminDistributionServlet
+ * Servlet implementation class AdminDistributionServlet/.4 
+ * ;''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''4l231
  */
 @WebServlet("/AdminDistributionServlet")
 public class AdminDistributionServlet extends HttpServlet {
@@ -54,9 +55,8 @@ public class AdminDistributionServlet extends HttpServlet {
 		}  
 		request.getSession().setAttribute("contractid", id);
 		
+		
 		response.sendRedirect("admin_distributor.jsp");
-		
-		
 	}
 
 	/**

@@ -8,37 +8,6 @@
 
 <link rel="stylesheet" type="text/css" href="CSS/background.css">
 
-<script type="text/javascript">
-	var status1 = '${sessionScope.pwdFail}';
-	if (status1 == 'yes') {
-		alert("两次密码输入不一样，请重新输入")
-	}
-
-	var status2 = '${sessionScope.userNull}';
-	if (status2 == 'yes') {
-		alert("用户名不可为空，请重新输入")
-	}
-
-	var status3 = '${sessionScope.userLength}';
-	if (status3 == 'yes') {
-		alert("用户名长度不可小于4，请重新输入")
-	}
-
-	var status4 = '${sessionScope.passNull}';
-	if (status4 == 'yes') {
-		alert("密码不可为空，请重新输入")
-	}
-
-	var status5 = '${sessionScope.passLength}';
-	if (status5 == 'yes') {
-		alert("密码长度不可小于6，请重新输入")
-	}
-
-	var status6 = '${sessionScope.userExist}';
-	if (status6 == 'yes') {
-		alert("用户名已存在，请重新输入")
-	}
-</script>
 </head>
 <body>
 	<div>

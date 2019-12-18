@@ -47,7 +47,7 @@
 					id="searchbutton">search</button>
 				<br>
 
-				<form name="tbform" id="tbform" action="AdminDelCharServlet" method="get">
+				<form name="tbform" id="tbform" action="AdminDistribution" method="get">
     <table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
@@ -65,7 +65,7 @@
     <button type="button" id="skip">跳转</button>
     <button type="button" id="down" >下一页</button>
     <button type="button" id="end" >尾页</button>
-    <input type="button" name="go" id="go" value="删除"  onclick="test()"/>
+    <input type="button" name="go" id="go" value="确认"  onclick="test()"/>
     </form>
 		</div>
 	</div>
@@ -102,7 +102,7 @@ var init = function(){
 			%>
 			var num=0;
 			<%
-			sql ="select * from privilege;";  //实际查询语句
+			sql ="select * from privilege order by uname;";  //实际查询语句
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				List<Object> list = new ArrayList<Object>();
@@ -169,52 +169,15 @@ function test(){
 		role.push(text);
 	}
 	$.ajax({
-	    type:"POST", //请求方式  
-	    url:"AdminDistributionServlet", //请求路径  
+	    type:"GET", //请求方式  
+	    url:"AdminAuthorityServlet", //请求路径  
 	    cache: false,     
 	    data:{//传参  
 	        "name":name,
 	        "role":role, 
-	    },
-	    dataType: 'boolean',   //返回值类型  
-	    success:function(suc){        
-	        alert("结果是:"+suc+"!");    //弹出返回过来的List对象  
-	    }  
+	    }
 	});
 }
-
-function findButton() {
-	var myForm = document.getElementById("tbform");
-	var i;
-	var isFound = false;
-	if(!myForm.ctct[0]){
-		 if(myForm.ctct.checked) {
-			  isFound = true;
-		  }
-		 if(isFound ==false){
-				alert("请选择要删除的角色！");
-				return;
-			}
-		 
-			//alert("You selected \""+myForm.ctct[i].value+"\".");
-			myForm.submit();
-	}else{
-		  for(i=0;i<myForm.ctct.length; i++) {
-			  if(myForm.ctct[i].checked) {
-				  isFound = true;
-			   break;
-			  }
-			}
-			if(isFound ==false){
-				alert("请选择要删除的角色！");
-				return;
-			}
-			//alert("You selected \""+myForm.ctct[i].value+"\".");
-			myForm.submit();
-	}
-}
-
-
 
 pageAll = (testDataList.length) / count; //计算总页数
 var setPage = function () {
