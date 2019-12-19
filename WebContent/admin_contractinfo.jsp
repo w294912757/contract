@@ -1,10 +1,13 @@
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<!DOCTYPE html>
+<%@ page import="com.mysql.jdbc.Driver"%>
+<%@ page import="java.sql.*"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查找角色</title>
+<title>合同详情</title>
 <script type="text/javascript">
 	function reLogin() {
 		var r = confirm("确认注销登录？")
@@ -36,29 +39,21 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-			<form name="characterqueryform" id="characterqueryform" method="get"
-				action="">
-				<h3>角色查询</h3>
-				查找角色:<input type="text" id="charactername" name="charactername"
-					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
-				<button style="height: 20px; width: 55px; text-align: center;"
-					id="searchbutton">search</button>
-				<br>
 
-				<table border="1" style="width: 100%">
-					<tr>
-						<th style="width: 60%;">角色</th>
-						<th>操作</th>
-					</tr>
-					<tr>
-						<td></td>
-						<td style="text-align: center;"><input type="submit"
-							value="修改"></td>
 
-					</tr>
-				</table>
+			<form name="admincontractinfoform" id="admincontractinfoform"
+				method="get">
+				<h3>合同详情</h3>
+				合同名称:<font id="contractid"> </font> <br>客户:<font
+					id="customerid"> </font><br>开始时间:<font id="begintime">
+				</font> <br>结束时间:<font id="endtime"> </font> <br> 合同内容:<br>
+				<font id="content"> </font><br> <br> <input type="button"
+					value="返回" onclick="window.location.href=' admin.jsp'">
 			</form>
+
 		</div>
-	</div><div class="photo"></div>
+	</div>
+	<div class="photo"></div>
 </body>
+
 </html>

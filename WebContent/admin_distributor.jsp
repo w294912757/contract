@@ -311,7 +311,7 @@ var init = function(){
 		}
 		for (var i = 0; i < len4; i++) {
 			var text = obj4.options[i].text;
-			toapprove.push(text);
+			toconfirm.push(text);
 		}
 
 		$.ajax({
