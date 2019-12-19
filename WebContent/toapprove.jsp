@@ -95,8 +95,8 @@ try {
 	if(conn != null){        
 		Statement stmt = null;  
 		ResultSet rs = null;  
-		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract where type=3;";  //实际查询语句
+		String user = (String) request.getSession().getAttribute("username");
+		String sql ="select * from contract a,contract_process b  where a.id=b.id and a.type=3 and b.type = 3 and b.state = 0 and b.uname = '"+user+"';";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

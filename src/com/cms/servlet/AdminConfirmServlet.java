@@ -47,7 +47,8 @@ public class AdminConfirmServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String acid = (String) session.getAttribute("acid");
 		String update = "update contract set type = 3 where id = '" + acid + "';";
-
+		Database.getDatabase().parseUpdate(update);
+		update = "update contract_process set state = 1 where type = 2 and id = '" + acid + "';";
 		Database.getDatabase().parseUpdate(update);
 		response.sendRedirect("admin_processquery.jsp");
 

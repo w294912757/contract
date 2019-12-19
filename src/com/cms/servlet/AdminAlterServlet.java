@@ -53,6 +53,8 @@ public class AdminAlterServlet extends HttpServlet {
             	id = values[i];
             }   
 		}  
+		
+		
 
 		//查询相关信息
 		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ='" + id + "';");

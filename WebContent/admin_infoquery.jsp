@@ -31,8 +31,8 @@
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
 			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
-			<a href="admin_authoritymanage.jsp">权限管理</a> <br> <a
-				href="admin_logmanage.jsp">日志管理</a> <br>
+			<a href="admin_authoritymanage.jsp">权限管理</a> <br>
+				 
 
 		</div>
 	</div>
@@ -91,7 +91,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a;";  //实际查询语句
+		String sql ="select * from contract;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

@@ -44,9 +44,22 @@ public class ApproveServlet extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String aid = (String) session.getAttribute("aid");
-		String update = "update contract set type = 4 where id = '" + aid + "';";
-
-		Database.getDatabase().parseUpdate(update);
+		String username = (String) session.getAttribute("username");
+		String sql = "update contract_process set state = 1 where type = 3 and uname='"+username+"' and id = '" + aid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		
+		sql = "select * from contract_process where type=3 and id = '" + aid + "' and state = 0";
+		ResultSet rs = Database.getDatabase().parseQuery(sql);
+		
+		try {
+			if(!rs.next()) {
+				String update = "update contract set type = 4 where id = '" + aid + "';";
+				Database.getDatabase().parseUpdate(update);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("approved.jsp");
 
 	}

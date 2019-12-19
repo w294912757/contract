@@ -64,8 +64,8 @@
 				href="admin_contractmanage.jsp">合同信息管理</a> <br> <a
 				href="admin_clientmanage.jsp">客户信息管理</a> <br> <br> <a>系统管理</a><br>
 			<a href="admin_distribution.jsp">分配合同</a> <br> <a
-				href="admin_authoritymanage.jsp">权限管理</a> <br> <a
-				href="admin_logmanage.jsp">日志管理</a> <br>
+				href="admin_authoritymanage.jsp">权限管理</a> <br>
+				 
 
 		</div>
 	</div>
@@ -75,26 +75,6 @@
 			<h3>流程配置</h3>
 			<form name="distributorform" id="distributorform" method="get"
 				action="">
-
-				<div
-					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
-					分配定稿人:
-					<p style="float: left;">待分配人员列表:</p>
-					<p style="float: right;">已分配人员列表:</p>
-					<br> <br> <select id="confirmer" name="confirmer"
-						multiple size="5" style="float: left;">
-					</select> <select id="toconfirm" name="toconfirm" multiple size="5"
-						style="float: right;" form="distributorform">
-
-					</select>
-
-					<button onclick="Select('confirmer','toconfirm');" type="button">>></button>
-					<br>
-					<button onclick="Back('confirmer','toconfirm');" type="button"><<</button>
-
-
-
-				</div>
 
 				<div
 					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
@@ -113,10 +93,29 @@
 					<br>
 					<button onclick="Back('contersigner','tocontersign');"
 						type="button"><<</button>
+			</div>
+			
+			<div
+					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
+					分配定稿人:
+					<p style="float: left;">待分配人员列表:</p>
+					<p style="float: right;">已分配人员列表:</p>
+					<br> <br> <select id="confirmer" name="confirmer"
+						multiple size="5" style="float: left;">
+					</select> <select id="toconfirm" name="toconfirm" multiple size="5"
+						style="float: right;" form="distributorform">
+
+					</select>
+
+					<button onclick="Select('confirmer','toconfirm');" type="button">>></button>
+					<br>
+					<button onclick="Back('confirmer','toconfirm');" type="button"><<</button>
 
 
 
 				</div>
+			
+			
 				<div
 					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
 					分配审批人:
@@ -311,7 +310,7 @@ var init = function(){
 		}
 		for (var i = 0; i < len4; i++) {
 			var text = obj4.options[i].text;
-			toapprove.push(text);
+			toconfirm.push(text);
 		}
 
 		$.ajax({

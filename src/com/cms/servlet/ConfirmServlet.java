@@ -44,11 +44,24 @@ public class ConfirmServlet extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String cid = (String) session.getAttribute("cid");
-		String update = "update contract set type = 3 where id = '" + cid + "';";
-
-		Database.getDatabase().parseUpdate(update);
+		String username = (String) session.getAttribute("username");
+		String sql = "update contract_process set state = 1 where type = 2 and uname='"+username+"' and id = '" + cid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		
+		sql = "select * from contract_process where type=2 and id = '" + cid + "' and state = 0";
+		ResultSet rs = Database.getDatabase().parseQuery(sql);
+		
+		try {
+			if(!rs.next()) {
+				String update = "update contract set type = 3 where id = '" + cid + "';";
+				Database.getDatabase().parseUpdate(update);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		response.sendRedirect("confirmed.jsp");
-
 	}
 
 	/**
