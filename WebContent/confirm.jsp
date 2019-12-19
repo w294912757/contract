@@ -65,5 +65,7 @@
 	document.getElementById("begintime").innerHTML = status3;
 	var status4 = '${sessionScope.cendtime}';
 	document.getElementById("endtime").innerHTML = status4;
+	var status5 = '${sessionScope.ccontent}';
+	document.getElementById("confirmcontent").innerHTML = status5;
 </script>
 </html>

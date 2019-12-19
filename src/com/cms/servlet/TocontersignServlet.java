@@ -53,11 +53,12 @@ public class TocontersignServlet extends HttpServlet {
 				id = values[i];
 			}
 		}
-		ResultSet rs = Database.getDatabase().parseQuery("select name from contract where id = '" + id + "';");
+		ResultSet rs = Database.getDatabase().parseQuery("select *from contract where id = '" + id + "';");
 		try {
 			while (rs.next()) {
 				request.getSession().setAttribute("tcid", id);
 				request.getSession().setAttribute("tcname", rs.getString("name"));
+				request.getSession().setAttribute("tccontent", rs.getString("tc_content"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

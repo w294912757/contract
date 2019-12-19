@@ -90,7 +90,7 @@ public class DraftServlet extends HttpServlet {
 				if (contractList.size() == 0) {
 					String insert = "insert into contract values(" + 1 + "," + "'" + contractname + "'" + "," + 0 + ","
 							+ "'" + username + "'" + "," + "'" + client + "'" + "," + "'" + draftcontent + "'" + ","
-							+ "'" + begintime + "'" + "," + "'" + endtime + "');";
+							+ "'" + begintime + "'" + "," + "'" + endtime + "','','','');";
 
 					Database.getDatabase().parseUpdate(insert);
 				} else {
@@ -98,7 +98,7 @@ public class DraftServlet extends HttpServlet {
 					int id = Integer.parseInt(contractid) + 1;
 					String insert = "insert into contract values(" + id + "," + "'" + contractname + "'" + "," + 0 + ","
 							+ "'" + username + "'" + "," + "'" + client + "'" + "," + "'" + draftcontent + "'" + ","
-							+ "'" + begintime + "'" + "," + "'" + endtime + "');";
+							+ "'" + begintime + "'" + "," + "'" + endtime + "','','','');";
 
 					Database.getDatabase().parseUpdate(insert);
 				}

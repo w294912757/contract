@@ -57,5 +57,7 @@
 <script>
 	var status1 = '${sessionScope.tcname}';
 	document.getElementById("contractname").innerHTML = status1;
+	var status2 = '${sessionScope.tccontent}';
+	document.getElementById("contersigncontent").innerHTML = status2;
 </script>
 </html>

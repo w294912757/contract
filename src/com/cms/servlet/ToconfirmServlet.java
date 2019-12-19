@@ -62,7 +62,7 @@ public class ToconfirmServlet extends HttpServlet {
 				request.getSession().setAttribute("ccustomer", rs.getString("customer"));
 				request.getSession().setAttribute("cbegintime", rs.getDate("beginTime"));
 				request.getSession().setAttribute("cendtime", rs.getDate("endTime"));
-
+				request.getSession().setAttribute("ccontent", rs.getString("content"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

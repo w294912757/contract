@@ -42,10 +42,13 @@ public class ContersignServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String tc_content = request.getParameter("contersigncontent");
 		HttpSession session = request.getSession();
 		String tcid = (String) session.getAttribute("tcid");
 		String username = (String) session.getAttribute("username");
 		String sql = "update contract_process set state = 1 where type = 1 and uname='"+username+"' and id = '" + tcid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		sql="update contract set tc_content ='"+tc_content+"' where id='"+tcid+"';";
 		Database.getDatabase().parseUpdate(sql);
 		
 		sql = "select * from contract_process where type=1 and id = '" + tcid + "' and state = 0";

@@ -59,5 +59,7 @@ var status1 = '${sessionScope.sname}';
 document.getElementById("contractid").innerHTML=status1;
 var status2 = '${sessionScope.scustomer}';
 document.getElementById("customerid").innerHTML=status2;
+var status3 = '${sessionScope.scontent}';
+document.getElementById("signcontent").innerHTML=status3;
 </script>
 </html>

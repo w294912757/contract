@@ -42,10 +42,13 @@ public class SignServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String s_content = request.getParameter("signcontent");
 		HttpSession session = request.getSession();
 		String sid = (String) session.getAttribute("sid");
 		String username = (String) session.getAttribute("username");
 		String sql = "update contract_process set state = 1 where type = 4 and uname='"+username+"' and id = '" + sid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		sql="update contract set s_content ='"+s_content+"' where id='"+sid+"';";
 		Database.getDatabase().parseUpdate(sql);
 		
 		sql = "select * from contract_process where type=4 and id = '" + sid + "' and state = 0";

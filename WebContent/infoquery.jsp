@@ -49,6 +49,7 @@
 					id="searchbutton">search</button>
 				<br>
 
+<form name="tbform" id="tbform" action="InfoQueryServlet" method="get">
 				<table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
@@ -66,6 +67,8 @@
     <button type="button" id="skip">跳转</button>
     <button type="button" id="down" >下一页</button>
     <button type="button" id="end" >尾页</button>
+    <input type="button" name="go" id="go" value="查询详细信息"  onclick="findButton()"/>
+    </form>
 		</div>
 	</div><div class="photo"></div>
 </body>
@@ -119,7 +122,7 @@ try {
 			  %>
 				  num++;
 				testDataList.push('<tr>'+
-					'<td>'+data[0]+'</td>'+
+					'<td><input name="ctct" type="radio" value="'+data[0]+'">'+data[0]+'</td>'+
 					'<td>'+data[1]+'</td>'+
 					'<td>'+data[2]+'</td>'+
 	                '</tr>');
@@ -135,6 +138,36 @@ try {
             out.print("数据库连接异常！");  
     }
 %>
+
+function findButton() {
+	var myForm = document.getElementById("tbform");
+	var i;
+	var isFound = false;
+	if(!myForm.ctct[0]){
+		 if(myForm.ctct.checked) {
+			  isFound = true;
+		  }
+		 if(isFound ==false){
+				alert("请选择要查询的合同！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}else{
+		  for(i=0;i<myForm.ctct.length; i++) {
+			  if(myForm.ctct[i].checked) {
+				  isFound = true;
+			   break;
+			  }
+			}
+			if(isFound ==false){
+				alert("请选择要查询的合同！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}
+}
 
 pageAll = (testDataList.length) / count; //计算总页数
 var setPage = function () {

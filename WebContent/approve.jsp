@@ -47,8 +47,8 @@
 				合同名称:<font id="contractid"> </font> <br>
 				<div style="width: 100%">
 					<div style="width: 20%; float: left; text-align: center;">
-						<input type="radio" id="yes" name="choise"> 通过 <br> <input
-							type="radio" id="no" name="choise"> 拒绝
+						<input type="radio"  name="choice" value="通过"> 通过 <br> <input
+							type="radio"  name="choice" value="拒绝"> 拒绝
 					</div>
 					<div style="width: 80%; float: right;">
 						<textarea
@@ -71,5 +71,7 @@
 <script>
 var status1 = '${sessionScope.aname}';
 document.getElementById("contractid").innerHTML=status1;
+var status2 = '${sessionScope.acontent}';
+document.getElementById("approvecontent").innerHTML=status2;
 </script>
 </html>
