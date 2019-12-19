@@ -3,7 +3,7 @@ create table customer(id varchar(40) not null,name varchar(40) not null,address 
 
 create table user(name varchar(40) not null,password varchar(20) not null,primary key(name));
 
-create table contract(id varchar(40) not null,name varchar(40) not null,type integer not null,uname varchar(40),customer varchar(40),content text not null,beginTime date,endTime date,primary key(id));
+create table contract(id varchar(40) not null,name varchar(40) not null,type integer not null,uname varchar(40),customer varchar(40),content text not null,beginTime date,endTime date,a_content text,s_content text,tc_content text,primary key(id));
 
 create table contract_attachment(id varchar(40) not null,fileName varchar(100) not null,path varchar(100) not null,type varchar(20) not null,uploadTime timestamp,con_id varchar(40) not null,primary key(id,con_id));
 

@@ -28,7 +28,7 @@
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
 			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
-			<a href="admin_authoritymanage.jsp">权限管理</a> <br> <a
+			<a href="admin_authoritymanage.jsp">权限管理</a> <br>
 				 
 
 		</div>
@@ -46,7 +46,7 @@
 					type="text" id="clientloc" name="clientloc"
 					style="margin-left: 10px; width: 150px;"> <br>传真:<input
 					type="text" id="clientfax" name="clientfax"
-					style="margin-left: 10px; width: 150px;"> <br> 邮箱:<input
+					style="margin-left: 10px; width: 150px;"> <br> 邮编:<input
 					type="text" id="clientmail" name="clientmail"
 					style="margin-left: 10px; width: 150px;"> <br>银行名称:<input
 					type="text" id="clientbankname" name="clientbankname"

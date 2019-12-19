@@ -48,19 +48,13 @@
 					id="searchbutton">search</button>
 				<br>
 
+<form name="tbform" id="tbform" action="AdminQueryClientServlet" method="get">
 				<table class="table-normal" id="outBoxTab"
     data-pagination="true" data-side-pagination="client" data-page-size="3">
         <thead>
             <tr>
                 <th>客户编号</th>
                 <th>客户名称</th>
-                <th>地址</th>
-                <th>电话</th>
-                <th>传真</th>
-                <th>邮编</th>
-                <th>银行名称</th>
-                <th>银行账户</th>
-                <th>客户简介</th>
             </tr>
         </thead>
         <tbody> </tbody>
@@ -71,6 +65,8 @@
     <button type="button" id="skip">跳转</button>
     <button type="button" id="down" >下一页</button>
     <button type="button" id="end" >尾页</button>
+    <input type="button" name="go" id="go" value="查询详细信息"   onclick="findButton()"/>
+    </form>
 		</div>
 	</div><div class="photo"></div>
 </body>
@@ -101,13 +97,6 @@ try {
 			List<Object> list = new ArrayList<Object>();
 			list.add(rs.getString(1));
 			list.add(rs.getString(2));
-			list.add(rs.getString(3));
-			list.add(rs.getString(4));
-			list.add(rs.getString(5));
-			list.add(rs.getString(6));
-			list.add(rs.getString(7));
-			list.add(rs.getString(8));
-			list.add(rs.getString(9));
 			%>
 			var data=new Array();
 			allName[nameCount]='<%=list.get(0)%>';
@@ -130,15 +119,8 @@ try {
 			  %>
 				  num++;
 				testDataList.push('<tr>'+
-					'<td>'+data[0]+'</td>'+
+					'<td><input name="ctct" type="radio" value="'+data[0]+'">'+data[0]+'</td>'+
 					'<td>'+data[1]+'</td>'+
-					'<td>'+data[2]+'</td>'+
-					'<td>'+data[3]+'</td>'+
-					'<td>'+data[4]+'</td>'+
-					'<td>'+data[5]+'</td>'+
-					'<td>'+data[6]+'</td>'+
-					'<td>'+data[7]+'</td>'+
-					'<td>'+data[8]+'</td>'+
 	                '</tr>');
 			<%
 			j++;
@@ -152,6 +134,36 @@ try {
             out.print("数据库连接异常！");  
     }
 %>
+
+function findButton() {
+	var myForm = document.getElementById("tbform");
+	var i;
+	var isFound = false;
+	if(!myForm.ctct[0]){
+		 if(myForm.ctct.checked) {
+			  isFound = true;
+		  }
+		 if(isFound ==false){
+				alert("请选择要查询的客户！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}else{
+		  for(i=0;i<myForm.ctct.length; i++) {
+			  if(myForm.ctct[i].checked) {
+				  isFound = true;
+			   break;
+			  }
+			}
+			if(isFound ==false){
+				alert("请选择要查询的客户！");
+				return;
+			}
+			//alert("You selected \""+myForm.ctct[i].value+"\".");
+			myForm.submit();
+	}
+}
 
 pageAll = (testDataList.length) / count; //计算总页数
 var setPage = function () {

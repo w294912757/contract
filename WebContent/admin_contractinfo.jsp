@@ -55,5 +55,16 @@
 	</div>
 	<div class="photo"></div>
 </body>
-
+<script>
+	var status1 = '${sessionScope.adminqname}';
+	document.getElementById("contractid").innerHTML = status1;
+	var status2 = '${sessionScope.adminqcustomer}';
+	document.getElementById("customerid").innerHTML = status2;
+	var status3 = '${sessionScope.adminqbegintime}';
+	document.getElementById("begintime").innerHTML = status3;
+	var status4 = '${sessionScope.adminqendtime}';
+	document.getElementById("endtime").innerHTML = status4;
+	var status5 = '${sessionScope.adminqcontent}';
+	document.getElementById("content").innerHTML = status5;
+</script>
 </html>

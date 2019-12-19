@@ -248,4 +248,37 @@
 		<servlet-name>AdminAlterServlet</servlet-name>
 		<url-pattern>/CMS/AdminAlterServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminQueryClientServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminQueryClientServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminQueryClientServlet</servlet-name>
+		<url-pattern>/CMS/AdminQueryClientServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InfoQueryServlet</servlet-name>
+		<servlet-class>com.cms.servlet.InfoQueryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>InfoQueryServlet</servlet-name>
+		<url-pattern>/CMS/InfoQueryServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdminInfoQueryServlet</servlet-name>
+		<servlet-class>com.cms.servlet.AdminInfoQueryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminInfoQueryServlet</servlet-name>
+		<url-pattern>/CMS/AdminInfoQueryServlet</url-pattern>
+	</servlet-mapping>
+	
+	
 </web-app>

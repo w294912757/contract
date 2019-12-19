@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -42,26 +43,34 @@ public class ApproveServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String choice = request.getParameter("choice");
+		String a_content = request.getParameter("approvecontent");
 		HttpSession session = request.getSession();
 		String aid = (String) session.getAttribute("aid");
 		String username = (String) session.getAttribute("username");
 		String sql = "update contract_process set state = 1 where type = 3 and uname='"+username+"' and id = '" + aid + "';";
 		Database.getDatabase().parseUpdate(sql);
-		
-		sql = "select * from contract_process where type=3 and id = '" + aid + "' and state = 0";
-		ResultSet rs = Database.getDatabase().parseQuery(sql);
-		
-		try {
-			if(!rs.next()) {
-				String update = "update contract set type = 4 where id = '" + aid + "';";
-				Database.getDatabase().parseUpdate(update);
+		sql="update contract set a_content = '"+a_content+"' where id='"+aid+"';";
+		Database.getDatabase().parseUpdate(sql);
+		if(choice.equals("拒绝")) {
+			sql="update contract set type =9 where id='"+aid+"';";
+			Database.getDatabase().parseUpdate(sql);
+		}else {
+			sql = "select * from contract_process where type=3 and id = '" + aid + "' and state = 0";
+			ResultSet rs = Database.getDatabase().parseQuery(sql);
+			
+			try {
+				if(!rs.next()) {
+					String update = "update contract set type = 4 where id = '" + aid + "';";
+					Database.getDatabase().parseUpdate(update);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		
 		response.sendRedirect("approved.jsp");
-
 	}
 
 	/**

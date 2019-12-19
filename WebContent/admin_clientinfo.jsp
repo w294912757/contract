@@ -44,18 +44,35 @@
 			<form name="admincontractinfoform" id="admincontractinfoform"
 				method="get">
 				<h3>客户详情</h3>
-				客户名称:<font id="custmerid"> </font> <br> 地址:<font id="address">
+				客户名称:<font id="customerid"> </font> <br> 地址:<font id="address">
 				</font><br> 电话:<font id="tel"></font> <br> 传真:<font id="fax">
-				</font> <br> 邮箱:<font id="code"> </font> <br> 银行名称:<font
+				</font> <br> 邮编:<font id="code"> </font> <br> 银行名称:<font
 					id="bank"> </font> <br> 银行账号:<font id="account"> </font> <br>
 				备注:<font id="content"> </font> <br> <br> <br> <input
 					type="button" value="返回"
-					onclick="window.location.href=' admin.jsp'">
+					onclick="window.location.href='admin_queryclient.jsp'">
 			</form>
 
 		</div>
 	</div>
 	<div class="photo"></div>
 </body>
-
+<script>
+	var status1 = '${sessionScope.adminqcname}';
+	document.getElementById("customerid").innerHTML = status1;
+	var status2 = '${sessionScope.adminqcaddress}';
+	document.getElementById("address").innerHTML = status2;
+	var status3 = '${sessionScope.adminqctel}';
+	document.getElementById("tel").innerHTML = status3;
+	var status4 = '${sessionScope.adminqcfax}';
+	document.getElementById("fax").innerHTML = status4;
+	var status5 = '${sessionScope.adminqccode}';
+	document.getElementById("code").innerHTML = status5;
+	var status6 = '${sessionScope.adminqcbank}';
+	document.getElementById("bank").innerHTML = status6;
+	var status7 = '${sessionScope.adminqcaccount}';
+	document.getElementById("account").innerHTML = status7;
+	var status8 = '${sessionScope.adminqccontent}';
+	document.getElementById("content").innerHTML = status8;
+</script>
 </html>

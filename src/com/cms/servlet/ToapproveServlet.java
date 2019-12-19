@@ -53,11 +53,12 @@ public class ToapproveServlet extends HttpServlet {
             }   
 		}  
 		
-		ResultSet rs = Database.getDatabase().parseQuery("select name from contract where id = '" + id + "';");
+		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id = '" + id + "';");
 		try {
 			while (rs.next()) {
 				request.getSession().setAttribute("aid", id);
 				request.getSession().setAttribute("aname", rs.getString("name"));
+				request.getSession().setAttribute("acontent", rs.getString("a_content"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

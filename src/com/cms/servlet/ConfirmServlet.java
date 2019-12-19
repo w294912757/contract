@@ -42,10 +42,13 @@ public class ConfirmServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		String c_content = request.getParameter("confirmcontent");
 		HttpSession session = request.getSession();
 		String cid = (String) session.getAttribute("cid");
 		String username = (String) session.getAttribute("username");
 		String sql = "update contract_process set state = 1 where type = 2 and uname='"+username+"' and id = '" + cid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		sql="update contract set content ='"+c_content+"' where id='"+cid+"';";
 		Database.getDatabase().parseUpdate(sql);
 		
 		sql = "select * from contract_process where type=2 and id = '" + cid + "' and state = 0";

@@ -46,7 +46,7 @@
 					type="text" id="clientloc" name="clientloc"
 					style="margin-left: 10px; width: 150px;"> <br>传真:<input
 					type="text" id="clientfax" name="clientfax"
-					style="margin-left: 10px; width: 150px;"> <br> 邮箱:<input
+					style="margin-left: 10px; width: 150px;"> <br> 邮编:<input
 					type="text" id="clientmail" name="clientmail"
 					style="margin-left: 10px; width: 150px;"> <br>银行名称:<input
 					type="text" id="clientbankname" name="clientbankname"

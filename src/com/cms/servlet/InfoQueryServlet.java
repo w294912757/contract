@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.Enumeration;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,16 +18,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SignServlet
+ * Servlet implementation class InfoQueryServlet
  */
-@WebServlet("/TosignServlet")
-public class TosignServlet extends HttpServlet {
+@WebServlet("/InfoQueryServlet")
+public class InfoQueryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TosignServlet() {
+	public InfoQueryServlet() {
 		// TODO Auto-generated constructor stub
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,32 +43,32 @@ public class TosignServlet extends HttpServlet {
 		// 将输出转换为中文
 		// request.setCharacterEncoding("UTF-8");
 		// response.setCharacterEncoding("UTF-8");
+
 		String id = "";
 		Enumeration<String> en = request.getParameterNames();
-		while(en.hasMoreElements()){    
-            String  paramName=(String)en.nextElement();                        
-            String[]  values=request.getParameterValues(paramName);    
-            for(int  i=0;i<values.length;i++){ 
-            	id = values[i];
-            }   
-		}  
-		
-		//查询相关信息
-		ResultSet rs = Database.getDatabase().parseQuery("select * from contract where id ='"+id+"';");
+		while (en.hasMoreElements()) {
+			String paramName = (String) en.nextElement();
+			String[] values = request.getParameterValues(paramName);
+			for (int i = 0; i < values.length; i++) {
+				id = values[i];
+			}
+		}
+		ResultSet rs = Database.getDatabase().parseQuery("select *from contract where id = '" + id + "';");
 		try {
-			while(rs.next()) {
-				request.getSession().setAttribute("sid", rs.getString("id"));
-				request.getSession().setAttribute("sname", rs.getString("name"));
-				request.getSession().setAttribute("scustomer", rs.getString("customer"));
-				request.getSession().setAttribute("scontent", rs.getString("s_content"));
+			while (rs.next()) {
+				request.getSession().setAttribute("qid", id);
+				request.getSession().setAttribute("qname", rs.getString("name"));
+				request.getSession().setAttribute("qcustomer", rs.getString("customer"));
+				request.getSession().setAttribute("qbegintime", rs.getString("beginTime"));
+				request.getSession().setAttribute("qendtime", rs.getString("endTime"));
+				request.getSession().setAttribute("qcontent", rs.getString("content"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("sign.jsp");
-		
+		response.sendRedirect("contractinfo.jsp");
 	}
 
 	/**
