@@ -1,4 +1,4 @@
-<%@page import="java.util.*"%>
+	<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.mysql.jdbc.Driver" %>   
@@ -42,7 +42,6 @@
 
 	<div class="mainbackground">
 		<div class="mainview">
-				action="">
 				<h3>合同信息查询</h3>
 				查找合同:<input type="text" id="contractname" name="contractname"
 					style="margin-left: 26px; width: 150px;" placeholder="输入查找条件...">
@@ -90,7 +89,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a,contract_state b where a.id=b.id;";  //实际查询语句
+		String sql ="select * from contract;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {

@@ -90,7 +90,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a,contract_state b where a.id=b.id;";  //实际查询语句
+		String sql ="select * from contract;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
@@ -98,7 +98,34 @@ try {
 			list.add(rs.getString("id"));
 			list.add(rs.getString("name"));
 			list.add(rs.getString("beginTime"));
-			list.add(rs.getString("type"));
+			String type = "";
+			switch(rs.getInt("type")){
+			case 0:{
+				type="已起草待分配";
+				break;
+			}
+			case 1:{
+				type="已分配";
+				break;
+			}
+			case 2:{
+				type="已会签";
+				break;
+			}
+			case 3:{
+				type="已定稿";
+				break;
+			}
+			case 4:{
+				type="已审批";
+				break;
+			}
+			case 5:{
+				type="已签订";
+				break;
+			}
+			}
+			list.add(type);
 			%>
 			var data=new Array();
 			allName[nameCount]='<%=list.get(0)%>';

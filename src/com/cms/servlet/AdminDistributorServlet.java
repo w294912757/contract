@@ -70,19 +70,19 @@ public class AdminDistributorServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String contractid = (String) session.getAttribute("contractid");
 		for (int i = 0; i < confirm.size(); i++) {
-			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+			Database.getDatabase().parseUpdate("insert into contract_process(id,uname,type) values ('" + contractid + "'" + "," + "'"
 					+ confirm.get(i) + "'" + "," + 2+ ");");
 		}
 		for (int i = 0; i < contersign.size(); i++) {
-			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+			Database.getDatabase().parseUpdate("insert  into contract_process(id,uname,type) values ('" + contractid + "'" + "," + "'"
 					+ contersign.get(i) + "'" + "," + 1 + ");");
 		}
 		for (int i = 0; i < sign.size(); i++) {
-			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+			Database.getDatabase().parseUpdate("insert into contract_process(id,uname,type) values ('" + contractid + "'" + "," + "'"
 					+ sign.get(i) + "'" + "," + 4 + ");");
 		}
 		for (int i = 0; i < approve.size(); i++) {
-			Database.getDatabase().parseUpdate("insert contract_process values ('" + contractid + "'" + "," + "'"
+			Database.getDatabase().parseUpdate("insert into contract_process(id,uname,type) values ('" + contractid + "'" + "," + "'"
 					+ approve.get(i) + "'" + "," + 3 + ");");
 		}
 

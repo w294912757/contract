@@ -31,8 +31,8 @@
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
 			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
-			<a href="admin_authoritymanage.jsp">权限管理</a> <br> <a
-				href="admin_logmanage.jsp">日志管理</a> <br>
+			<a href="admin_authoritymanage.jsp">权限管理</a> <br>
+				 
 
 		</div>
 	</div>
@@ -84,7 +84,7 @@ var nowPage = 0, //当前页
 var testDataList = []; //创建一个存放数据的数组
 var allName = new Array();
 var nameCount = 0;
-<%
+var init = function(){<%
 int j = 0;
 try {  
 	Class.forName("com.mysql.cj.jdbc.Driver");  ////加载数据库驱动
@@ -146,6 +146,10 @@ try {
             out.print("数据库连接异常！");  
     }
 %>
+}
+init();
+
+
 function findButton() {
 	var myForm = document.getElementById("tbform");
 	var i;

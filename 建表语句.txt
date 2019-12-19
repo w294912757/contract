@@ -11,5 +11,5 @@ create table role(name varchar(40) not null,functions varchar(500),contract_draf
 
 create table privilege(uname varchar(40) not null,rname varchar(40) not null,primary key(rname,uname));
 
-create table contract_process(id varchar(40) not null,uname varchar(40) not null,type integer not null,primary key(id,uname,type));
+create table contract_process(id varchar(40) not null,uname varchar(40) not null,type integer not null,state integer not null default 0,primary key(id,uname,type));
 

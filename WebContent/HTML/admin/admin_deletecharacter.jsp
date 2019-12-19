@@ -29,7 +29,7 @@
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
 			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
 			<a href="admin_authoritymanage.jsp">权限管理</a> <br> <a
-				href="admin_logmanage.jsp">日志管理</a> <br>
+				 
 
 		</div>
 	</div>

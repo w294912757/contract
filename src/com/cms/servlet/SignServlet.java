@@ -44,9 +44,22 @@ public class SignServlet extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String sid = (String) session.getAttribute("sid");
-		String update = "update contract set type = 5 where id = '" + sid + "';";
-
-		Database.getDatabase().parseUpdate(update);
+		String username = (String) session.getAttribute("username");
+		String sql = "update contract_process set state = 1 where type = 4 and uname='"+username+"' and id = '" + sid + "';";
+		Database.getDatabase().parseUpdate(sql);
+		
+		sql = "select * from contract_process where type=4 and id = '" + sid + "' and state = 0";
+		ResultSet rs = Database.getDatabase().parseQuery(sql);
+		
+		try {
+			if(!rs.next()) {
+				String update = "update contract set type = 5 where id = '" + sid + "';";
+				Database.getDatabase().parseUpdate(update);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("signed.jsp");
 
 	}

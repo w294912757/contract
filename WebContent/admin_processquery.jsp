@@ -31,8 +31,8 @@
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
 			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
-			<a href="admin_authoritymanage.jsp">权限管理</a> <br> <a
-				href="admin_logmanage.jsp">日志管理</a> <br>
+			<a href="admin_authoritymanage.jsp">权限管理</a> <br>
+				 
 
 		</div>
 	</div>
@@ -91,7 +91,7 @@ try {
 		Statement stmt = null;  
 		ResultSet rs = null;  
 		//String sql ="select * from contract;";  //查询语句
-		String sql ="select * from contract a;";  //实际查询语句
+		String sql ="select * from contract;";  //实际查询语句
 		stmt = conn.createStatement();  
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
@@ -99,7 +99,36 @@ try {
 			list.add(rs.getString("id"));
 			list.add(rs.getString("name"));
 			list.add(rs.getString("beginTime"));
-			list.add(rs.getString("type"));
+			String type = "";
+			switch(rs.getInt("type")){
+			case 0:{
+				type="已起草待分配";
+				break;
+			}
+			case 1:{
+				type="已分配";
+				break;
+			}
+			case 2:{
+				type="已会签";
+				break;
+			}
+			case 3:{
+				type="已定稿";
+				break;
+			}
+			case 4:{
+				type="已审批";
+				break;
+			}
+			case 5:{
+				type="已签订";
+				break;
+			}
+			}
+			list.add(type);
+			
+			
 			%>
 			var data=new Array();
 			allName[nameCount]='<%=list.get(0)%>';
