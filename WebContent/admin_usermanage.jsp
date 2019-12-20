@@ -23,12 +23,18 @@
 	<div class="navigationbackground">
 		<div class="navigation">
 
-			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp">合同信息查询</a>
-			<br> <a href="admin_processquery.jsp">合同流程查询</a> <br> <br>
+			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp" <%if (request.getSession().getAttribute("contract_query").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>合同信息查询</a>
+			<br> <a href="admin_processquery.jsp" <%if (request.getSession().getAttribute("process_query").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>合同流程查询</a> <br> <br>
 			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
 			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
-			<a>系统管理</a><br> <a href="admin_distribution.jsp">分配合同</a> <br>
-			<a href="admin_authoritymanage.jsp">权限管理</a> <br>
+			<a>系统管理</a><br> <a href="admin_distribution.jsp" >分配合同</a> <br>
+			<a href="admin_authoritymanage.jsp" <%if (request.getSession().getAttribute("authority_distribute").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>权限管理</a> <br>
 				 
 
 		</div>
@@ -37,13 +43,15 @@
 	<div class="mainbackground">
 		<div class="mainview">
 			<button id="insertuser" name="insertuser"
-				style="margin-left: 26px; width: 150px; text-align: center;"
-				value="info" onclick="window.location.href = 'admin_insertuser.jsp'">新增用户</button>
+				value="info" onclick="window.location.href = 'admin_insertuser.jsp'" <%if (request.getSession().getAttribute("user_insert").equals("0")) {%>
+				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+			<%}%>>新增用户</button>
 			<br> <br>
 
 			<button id="deleteuser" name="deleteuser"
-				style="margin-left: 26px; width: 150px; text-align: center;"
-				value="info" onclick="window.location.href = 'admin_deleteuser.jsp'">删除用户</button>
+				value="info" onclick="window.location.href = 'admin_deleteuser.jsp'" <%if (request.getSession().getAttribute("user_delete").equals("0")) {%>
+				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+			<%}%>>删除用户</button>
 			<br> <br>
 
 		</div>

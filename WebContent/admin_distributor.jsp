@@ -58,13 +58,18 @@
 		<div class="navigation">
 
 
-			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp"
-				class="test">合同信息查询</a> <br> <a href="admin_processquery.jsp">合同流程查询</a>
-			<br> <br> <a>基础数据管理</a><br> <a
-				href="admin_contractmanage.jsp">合同信息管理</a> <br> <a
-				href="admin_clientmanage.jsp">客户信息管理</a> <br> <br> <a>系统管理</a><br>
-			<a href="admin_distribution.jsp">分配合同</a> <br> <a
-				href="admin_authoritymanage.jsp">权限管理</a> <br>
+			<br> <a>查询统计</a><br> <a href="admin_infoquery.jsp" <%if (request.getSession().getAttribute("contract_query").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>合同信息查询</a>
+			<br> <a href="admin_processquery.jsp" <%if (request.getSession().getAttribute("process_query").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>合同流程查询</a> <br> <br>
+			<a>基础数据管理</a><br> <a href="admin_contractmanage.jsp">合同信息管理</a>
+			<br> <a href="admin_clientmanage.jsp">客户信息管理</a> <br> <br>
+			<a>系统管理</a><br> <a href="admin_distribution.jsp" >分配合同</a> <br>
+			<a href="admin_authoritymanage.jsp" <%if (request.getSession().getAttribute("authority_distribute").equals("0")) {%>
+				style="display: none;" ;
+			<%}%>>权限管理</a> <br>
 				 
 
 		</div>
@@ -76,8 +81,10 @@
 			<form name="distributorform" id="distributorform" method="get"
 				action="">
 
-				<div
-					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
+				<div <%if (request.getSession().getAttribute("process_distribute_contersign").equals("0")) {%>
+				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+			<%}%>
+					>
 					分配会签人:
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
@@ -116,8 +123,10 @@
 				</div>
 			
 			
-				<div
-					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
+				<div <%if (request.getSession().getAttribute("process_distribute_approve").equals("0")) {%>
+				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+			<%}%>
+					>
 					分配审批人:
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
@@ -137,7 +146,9 @@
 
 				</div>
 				<div
-					style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;">
+					<%if (request.getSession().getAttribute("process_distribute_sign").equals("0")) {%>
+				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+			<%}%>>
 					分配签订人:
 					<p style="float: left;">待分配人员列表:</p>
 					<p style="float: right;">已分配人员列表:</p>
