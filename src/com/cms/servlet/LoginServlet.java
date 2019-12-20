@@ -87,8 +87,45 @@ public class LoginServlet extends HttpServlet {
 			response.getWriter().println(0);
 		} else {
 			// 成功登录
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			select = "select * from role a, privilege b where b.uname = '" + username + "'and a.name=b.rname;";
+			rs = db.parseQuery(select);
+
+			try {
+				while (rs.next()) {
+					request.getSession().setAttribute("contract_draft", rs.getString("contract_draft"));
+					request.getSession().setAttribute("contract_confirm", rs.getString("contract_confirm"));
+					request.getSession().setAttribute("contract_query", rs.getString("contract_query"));
+					request.getSession().setAttribute("contract_delete", rs.getString("contract_delete"));
+					request.getSession().setAttribute("process_contersign", rs.getString("process_contersign"));
+					request.getSession().setAttribute("process_approve", rs.getString("process_approve"));
+					request.getSession().setAttribute("process_sign", rs.getString("process_sign"));
+					request.getSession().setAttribute("process_distribute_contersign",
+							rs.getString("process_distribute_contersign"));
+					request.getSession().setAttribute("process_distribute_approve",
+							rs.getString("process_distribute_approve"));
+					request.getSession().setAttribute("process_distribute_sign",
+							rs.getString("process_distribute_sign"));
+					request.getSession().setAttribute("process_query", rs.getString("process_query"));
+					request.getSession().setAttribute("user_insert", rs.getString("user_insert"));
+					request.getSession().setAttribute("user_alter", rs.getString("user_alter"));
+					request.getSession().setAttribute("user_query", rs.getString("user_query"));
+					request.getSession().setAttribute("user_delete", rs.getString("user_delete"));
+					request.getSession().setAttribute("role_insert", rs.getString("role_insert"));
+					request.getSession().setAttribute("role_alter", rs.getString("role_alter"));
+					request.getSession().setAttribute("role_query", rs.getString("role_query"));
+					request.getSession().setAttribute("role_delete", rs.getString("role_delete"));
+					request.getSession().setAttribute("authority_distribute", rs.getString("authority_distribute"));
+					request.getSession().setAttribute("customer_insert", rs.getString("customer_insert"));
+					request.getSession().setAttribute("customer_alter", rs.getString("customer_alter"));
+					request.getSession().setAttribute("customer_query", rs.getString("customer_query"));
+					request.getSession().setAttribute("customer_delete", rs.getString("customer_delete"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			request.getSession().setAttribute("username", username);
 			if (type.equals("user")) {
 				response.getWriter().println(2);
 			} else {
