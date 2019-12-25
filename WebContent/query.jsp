@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 100px; background-color: black;"></div>
+	<div style="width: 1500px; height: 100px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -60,13 +60,13 @@
 			<button id="search" name="search"
 				value="info"
 				onclick="window.location.href = ' infoquery.jsp'" <%if (request.getSession().getAttribute("contract_query").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>合同信息查询</button>
 			<br> <br>
 			<button id="search" name="search"
 				value="process"
 				onclick="window.location.href = ' processquery.jsp'" <%if (request.getSession().getAttribute("process_query").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>合同流程查询</button>
 
 		</div>

@@ -87,6 +87,8 @@ public class Admininsertuser extends HttpServlet {
 					// 符合注册条件，插入数据库
 					String insert = "insert into user(name,password) values('" + username + "','" + pass + "');";
 					Database.getDatabase().parseUpdate(insert);
+					insert = "insert into privilege(uname,rname) values('" + username + "','" + "newuser');";
+					Database.getDatabase().parseUpdate(insert);
 
 					// 把用户消息放进session中
 					response.sendRedirect("admin_insertuser.jsp");

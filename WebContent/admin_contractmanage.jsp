@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 100px; background-color: black;"></div>
+	<div style="width: 1500px; height: 100px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -47,14 +47,14 @@
 					
 					value="info"
 					onclick="window.location.href = 'admin_insertcontract.jsp'" <%if (request.getSession().getAttribute("contract_draft").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>新增合同</button>
 				<br> <br>
 				<button id="altercontract" name="altercontract"
 					
 					value="info"
 					onclick="window.location.href = 'admin_altercontract.jsp'" <%if (request.getSession().getAttribute("contract_confirm").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>修改合同</button>
 				<br> <br>
 

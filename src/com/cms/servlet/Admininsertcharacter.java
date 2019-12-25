@@ -43,7 +43,7 @@ public class Admininsertcharacter extends HttpServlet {
 		System.out.println(session.getAttribute("username"));
 		String charactername = request.getParameter("charactername");
 		String description = request.getParameter("description");
-		String checkboxes[] = request.getParameterValues("checkbox");
+		String checkboxes[] = request.getParameterValues("authority");
 		List<String> author = Arrays.asList(checkboxes);
 		int contract_draft = 0;
 		int contract_confirm = 0;
@@ -152,17 +152,16 @@ public class Admininsertcharacter extends HttpServlet {
 				contractList.add(rs.getString(1));
 			}
 			if (contractList.contains(charactername)) {
-				response.getWriter().print("<script>alert('存在同名角色!');window.location.href='draft.jsp'</script>");
+				response.getWriter().print("<script>alert('存在同名角色!');window.location.href='admin_insertcharacter.jsp'</script>");
 			} else {
 				String insert = "insert into role values('" + charactername + "'" + "," + "'" + description + "'" + ","
 						+ "'" + "admin" + "'" + "," + contract_draft + "," + contract_confirm + "," + contract_query
 						+ "," + contract_delete + "," + process_contersign + "," + process_approve + "," + process_sign
-						+ "," + process_distribute_contersign + ","  + process_distribute_approve  + ","
-						+ process_distribute_sign  + "," + process_query  + "," + user_insert  + ","
-						+ user_alter  + "," + user_query  + "," + user_delete   + "," + role_insert  
-						+ "," + role_alter + "," + role_query + "," + role_delete  + ","
-						+ authority_distribute  + "," + customer_insert  + "," + customer_alter  + ","
-						+ customer_query  + "," + customer_delete + ");";
+						+ "," + process_distribute_contersign + "," + process_distribute_approve + ","
+						+ process_distribute_sign + "," + process_query + "," + user_insert + "," + user_alter + ","
+						+ user_query + "," + user_delete + "," + role_insert + "," + role_alter + "," + role_query + ","
+						+ role_delete + "," + authority_distribute + "," + customer_insert + "," + customer_alter + ","
+						+ customer_query + "," + customer_delete + ");";
 
 				Database.getDatabase().parseUpdate(insert);
 			}

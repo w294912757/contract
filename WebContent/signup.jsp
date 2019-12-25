@@ -10,7 +10,8 @@
 
 </head>
 <body>
-	<div>
+	<div class="loginbackground">
+	<div class="login">
 
 		<form name="signup" id="signupform" method="get"
 			action="SignupServlet">
@@ -37,6 +38,7 @@
 
 
 	</div>
-	<div class="photo"></div>
+	</div>
+	<div class="photo1"></div>
 </body>
 </html>

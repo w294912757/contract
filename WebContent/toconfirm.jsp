@@ -27,7 +27,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 100px; background-color: black;"></div>
+	<div style="width: 1500px; height: 100px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
