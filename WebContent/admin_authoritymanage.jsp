@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 100px; background-color: black;"></div>
+	<div style="width: 1500px; height: 100px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -56,7 +56,7 @@
 				<button id="deleteuser" name="deleteuser"
 					value="info"
 					onclick="window.location.href = 'admin_authoritydistribute.jsp'" <%if (request.getSession().getAttribute("authority_distribute").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>分配权限</button>
 				<br> <br>
 

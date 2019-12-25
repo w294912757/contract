@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 50px; background-color: black;"></div>
+	<div style="width: 1500px; height: 50px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -43,14 +43,14 @@
 			<button id="insertcharacter" name="insertcharacter"
 				value="info"
 				onclick="window.location.href = 'admin_insertcharacter.jsp'" <%if (request.getSession().getAttribute("role_insert").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>新增角色</button>
 			<br> <br>
 
 			<button id="deletecharacter" name="deletecharacter"
 				value="info"
 				onclick="window.location.href = 'admin_deletecharacter.jsp'" <%if (request.getSession().getAttribute("role_delete").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>删除角色</button>
 			<br> <br>
 

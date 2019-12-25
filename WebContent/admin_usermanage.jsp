@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 50px; background-color: black;"></div>
+	<div style="width: 1500px; height: 50px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -44,13 +44,13 @@
 		<div class="mainview">
 			<button id="insertuser" name="insertuser"
 				value="info" onclick="window.location.href = 'admin_insertuser.jsp'" <%if (request.getSession().getAttribute("user_insert").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>新增用户</button>
 			<br> <br>
 
 			<button id="deleteuser" name="deleteuser"
 				value="info" onclick="window.location.href = 'admin_deleteuser.jsp'" <%if (request.getSession().getAttribute("user_delete").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>删除用户</button>
 			<br> <br>
 

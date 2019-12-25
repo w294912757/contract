@@ -62,8 +62,7 @@ public class DraftServlet extends HttpServlet {
 
 		} else if (draftcontent.equals("")) {
 			response.getWriter().print("<script>alert('合同内容不能为空!');window.location.href='draft.jsp'</script>");
-//			request.getSession().setAttribute("contentFail", "yes");
-//			request.getRequestDispatcher("draft.jsp").forward(request, response);
+
 
 		} else {
 			try {
@@ -71,12 +70,14 @@ public class DraftServlet extends HttpServlet {
 
 			} catch (Exception e) {
 				response.getWriter().print("<script>alert('开始时间格式错误!');window.location.href='draft.jsp'</script>");
+
 			}
 			try {
 				Date date = formatter.parse(endtime);
 
 			} catch (Exception e) {
 				response.getWriter().print("<script>alert('结束时间格式错误!');window.location.href='draft.jsp'</script>");
+
 			}
 
 			try {

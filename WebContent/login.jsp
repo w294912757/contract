@@ -11,7 +11,8 @@
 </script>
 </head>
 <body>
-	<div>
+	<div class="loginbackground">
+	<div class="login">
 
 		<form name="login" id="loginform" method="get" action="LoginServlet">
 			<fieldset>
@@ -33,7 +34,8 @@
 
 
 	</div>
-	<div class="photo"></div>
+	</div>
+	<div class="photo1"></div>
 </body>
 <script>
 	function user() {

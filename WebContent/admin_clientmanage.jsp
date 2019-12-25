@@ -19,7 +19,7 @@
 </head>
 <body>
 	<button onclick="reLogin()" style="float: right;">注销登录</button>
-	<div style="width: 1500px; height: 100px; background-color: black;"></div>
+	<div style="width: 1500px; height: 100px;  "></div>
 	<div class="navigationbackground">
 		<div class="navigation">
 
@@ -46,14 +46,14 @@
 
 				value="info"
 				onclick="window.location.href = 'admin_insertclient.jsp'" <%if (request.getSession().getAttribute("customer_insert").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>新增客户</button>
 			<br> <br>
 			<button id="querycharacter" name="querycharacter"
 
 				value="info"
 				onclick="window.location.href = 'admin_queryclient.jsp'" <%if (request.getSession().getAttribute("customer_query").equals("0")) {%>
-				style="display: none;" ;}else{style="margin-left: 26px; width: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="margin-left: 26px; width: 150px; text-align: center;"
 			<%}%>>查询客户</button>
 			<br> <br>
 
