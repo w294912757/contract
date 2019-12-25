@@ -87,6 +87,8 @@ public class SignupServlet extends HttpServlet {
 					// 符合注册条件，插入数据库
 					String insert = "insert into user(name,password) values('" + username + "','" + pass + "');";
 					Database.getDatabase().parseUpdate(insert);
+					insert = "insert into privilege(uname,rname) values('" + username + "','" + "newuser');";
+					Database.getDatabase().parseUpdate(insert);
 
 					response.sendRedirect("login.jsp");
 				}
