@@ -54,7 +54,8 @@ public class AdminDelUserServlet extends HttpServlet {
 		} 
 		
 		Database.getDatabase().parseUpdate("delete from user where name ='"+id+"';");
-		
+		Database.getDatabase().parseUpdate("delete from privilege where uname ='"+id+"';");
+		Database.getDatabase().parseUpdate("delete from contract_process where uname ='"+id+"';");
 		response.sendRedirect("admin_deleteuser.jsp");
 	}
 
