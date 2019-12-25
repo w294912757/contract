@@ -165,7 +165,7 @@ public class Admininsertcharacter extends HttpServlet {
 
 				Database.getDatabase().parseUpdate(insert);
 			}
-			response.sendRedirect("admin_insertcharacter.jsp");
+			response.getWriter().print("<script>alert('操作成功!');window.location.href='admin_insertcharacter.jsp'</script>");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
