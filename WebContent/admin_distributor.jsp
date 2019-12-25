@@ -82,7 +82,7 @@
 				action="">
 
 				<div <%if (request.getSession().getAttribute("process_distribute_contersign").equals("0")) {%>
-				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;"
 			<%}%>
 					>
 					分配会签人:
@@ -124,7 +124,7 @@
 			
 			
 				<div <%if (request.getSession().getAttribute("process_distribute_approve").equals("0")) {%>
-				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;"
 			<%}%>
 					>
 					分配审批人:
@@ -147,7 +147,7 @@
 				</div>
 				<div
 					<%if (request.getSession().getAttribute("process_distribute_sign").equals("0")) {%>
-				style="display: none;" ;}else{style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;";
+				style="display: none;" <% }else{%>style="width: 100%; border: 1px solid #000; height: 150px; text-align: center;"
 			<%}%>>
 					分配签订人:
 					<p style="float: left;">待分配人员列表:</p>
