@@ -53,12 +53,12 @@
 				<textarea
 					style="overflow: scroll; overflow-x: hidden; height: 100px; width: 100%;"
 					name="description" id="description"></textarea>
-				权限配置:<br> 合同管理:<br> <input type="checkbox" name="authority"
-					value="起草合同">起草合同 <input type="checkbox" name="authority"
-					value="定稿合同">定稿合同 <input type="checkbox" name="authority"
-					value="查询合同">查询合同 <input type="checkbox" name="authority"
-					value="删除合同">删除合同<br> 流程管理:<br> <input
-					type="checkbox" name="authority" value="会签合同">会签合同<input
+				权限配置:<br> 合同管理:<br> <input type="checkbox"
+					name="authority" value="起草合同">起草合同 <input type="checkbox"
+					name="authority" value="定稿合同">定稿合同 <input type="checkbox"
+					name="authority" value="查询合同">查询合同 <input type="checkbox"
+					name="authority" value="删除合同">删除合同<br> 流程管理:<br>
+				<input type="checkbox" name="authority" value="会签合同">会签合同<input
 					type="checkbox" name="authority" value="审批合同">审批合同 <input
 					type="checkbox" name="authority" value="签订合同">签订合同 <input
 					type="checkbox" name="authority" value="分配会签">分配会签<input

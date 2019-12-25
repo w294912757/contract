@@ -2,6 +2,7 @@ package com.cms.servlet;
 
 import java.io.IOException;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -79,9 +80,6 @@ public class Admininsertclient extends HttpServlet {
 				Database.getDatabase().parseUpdate(insert);
 			}
 
-			// 符合注册条件，插入数据库
-
-			// 把用户消息放进session中
 
 			response.getWriter().print("<script>alert('操作成功!');window.location.href='admin_insertclient.jsp'</script>");
 
